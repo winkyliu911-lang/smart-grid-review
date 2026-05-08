@@ -27,11 +27,11 @@ body {
 header {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
-  padding: 48px 0 36px;
+  padding: 16px 0 12px;
   text-align: center;
 }
-header h1 { font-size: 2.2em; margin-bottom: 8px; }
-header p { font-size: 1.1em; opacity: 0.9; }
+header h1 { font-size: 1.4em; margin-bottom: 2px; }
+header p { font-size: 0.85em; opacity: 0.9; margin: 0; }
 nav {
   background: var(--primary);
   position: sticky;
@@ -41,16 +41,21 @@ nav {
 }
 nav .container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   gap: 0;
 }
+nav .container::-webkit-scrollbar { display: none; }
 nav a {
   color: rgba(255,255,255,0.85);
   text-decoration: none;
-  padding: 12px 16px;
-  font-size: 0.9em;
+  padding: 8px 10px;
+  font-size: 0.78em;
   transition: background 0.2s;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 nav a:hover { background: rgba(255,255,255,0.1); color: white; }
 .exam-focus {
@@ -68,17 +73,17 @@ nav a:hover { background: rgba(255,255,255,0.1); color: white; }
 }
 section {
   background: var(--card);
-  margin: 24px 0;
-  padding: 36px;
-  border-radius: 12px;
+  margin: 12px 0;
+  padding: 20px;
+  border-radius: 10px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 section h2 {
   color: var(--primary);
-  font-size: 1.6em;
+  font-size: 1.3em;
   border-bottom: 3px solid var(--secondary);
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
 }
 h3 {
   color: var(--secondary);
@@ -163,19 +168,26 @@ li { margin: 4px 0; }
 }
 .toc-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 12px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 6px;
+  margin-top: 8px;
 }
 .toc-item {
   background: #edf2f7;
-  padding: 12px 16px;
-  border-radius: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
   border-left: 3px solid var(--secondary);
+  font-size: 0.88em;
 }
 .toc-item a { color: var(--primary); text-decoration: none; font-weight: 600; }
 .toc-item a:hover { text-decoration: underline; }
-.toc-item .bilingual { display: block; margin-top: 2px; }
+.toc-item .bilingual { display: block; margin-top: 1px; font-size: 0.85em; }
+.collapsible-toggle { cursor: pointer; user-select: none; color: var(--secondary); font-size: 0.85em; margin: 8px 0 4px; display: inline-block; }
+.collapsible-toggle:hover { text-decoration: underline; }
+.collapsible-toggle::before { content: "▶ "; font-size: 0.7em; }
+.collapsible-toggle.open::before { content: "▼ "; }
+.collapsible-content { display: none; }
+.collapsible-content.show { display: block; }
 footer {
   text-align: center;
   padding: 32px;
@@ -204,10 +216,23 @@ footer {
 }
 .src-block::before { content: "📄 Source: "; font-weight: 600; font-style: normal; }
 @media (max-width: 768px) {
-  section { padding: 20px; }
+  section { padding: 14px; margin: 8px 0; }
+  section h2 { font-size: 1.1em; }
+  h3 { font-size: 1.05em; }
   .comparison-grid { grid-template-columns: 1fr; }
-  header h1 { font-size: 1.6em; }
-  nav a { padding: 10px 12px; font-size: 0.8em; }
+  header h1 { font-size: 1.2em; }
+  header { padding: 10px 0 8px; }
+  header p { font-size: 0.75em; }
+  nav a { padding: 6px 8px; font-size: 0.72em; }
+  .container { padding: 0 10px; }
+  .toc-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
+  .toc-item { padding: 4px 8px; font-size: 0.82em; }
+  table { font-size: 0.82em; }
+  th, td { padding: 5px 6px; }
+  .formula { padding: 10px 12px; font-size: 0.95em; }
+  .exam-focus { padding: 8px 12px; font-size: 0.9em; }
+  .key-point { padding: 8px 12px; font-size: 0.9em; }
+  .past-exam { padding: 10px 12px; }
 }
 </style>
 </head>
@@ -215,9 +240,8 @@ footer {
 
 <header>
   <div class="container">
-    <h1>ELEC6095 Smart Grid</h1>
-    <p>Comprehensive Final Exam Review / 期末复习全面总结</p>
-    <p style="margin-top:8px;opacity:0.8">HKU Department of Electrical and Electronic Engineering</p>
+    <h1>ELEC6095 Smart Grid — Final Exam Review / 期末复习</h1>
+    <p>HKU EEE | Comprehensive Bilingual Review / 中英双语全面复习资料</p>
   </div>
 </header>
 
@@ -256,6 +280,8 @@ footer {
   </div>
 
   <h3>Source Abbreviations / 资料来源缩写 <span class="src">p.XX = slide page number</span></h3>
+  <span class="collapsible-toggle" onclick="toggleCollapse(this)">Show source table / 展开来源表</span>
+  <div class="collapsible-content">
   <table style="font-size:0.88em">
     <tr><th>Abbreviation / 缩写</th><th>Full File Name / 完整文件名</th><th>Topic / 主题</th></tr>
     <tr><td><span class="src" style="margin:0">Intro 2026</span></td><td>Intro 2026.pdf (65 pages)</td><td>Course overview + RE topologies / 课程概述+RE类型</td></tr>
@@ -274,6 +300,7 @@ footer {
     <tr><td><span class="src" style="margin:0">6095期末考试重点</span></td><td>6095期末考试重点.doc</td><td>Professor's exam review session / 老师考试重点</td></tr>
     <tr><td><span class="src" style="margin:0">20XX</span></td><td>2017.pdf ~ 2025.pdf</td><td>Past exam papers / 历年试卷</td></tr>
   </table>
+  </div>
 
   <div class="toc-grid">
     <div class="toc-item"><a href="#ch1">1. Renewable Energy Topologies</a><span class="bilingual">可再生能源类型与基本原理</span></div>
@@ -2005,5 +2032,17 @@ footer {
   <p style="margin-top:8px">Good luck on your exam! / 祝你考试顺利！加油！</p>
 </footer>
 
+<script>
+function toggleCollapse(el){
+  el.classList.toggle('open');
+  var content=el.nextElementSibling;
+  content.classList.toggle('show');
+  if(content.classList.contains('show')){
+    el.textContent=el.textContent.replace('Show','Hide').replace('展开','收起');
+  }else{
+    el.textContent=el.textContent.replace('Hide','Show').replace('收起','展开');
+  }
+}
+</script>
 </body>
 </html>
