@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELEC6095 Smart Grid - Final Exam Review / 期末复习资料</title>
+<style>
+:root {
+  --primary: #1a365d;
+  --secondary: #2b6cb0;
+  --accent: #e53e3e;
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --text: #2d3748;
+  --border: #e2e8f0;
+  --highlight: #fffbeb;
+  --exam-tag: #c53030;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 48px 0 36px;
+  text-align: center;
+}
+header h1 { font-size: 2.2em; margin-bottom: 8px; }
+header p { font-size: 1.1em; opacity: 0.9; }
+nav {
+  background: var(--primary);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+nav .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+nav a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 12px 16px;
+  font-size: 0.9em;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+nav a:hover { background: rgba(255,255,255,0.1); color: white; }
+.exam-focus {
+  background: linear-gradient(90deg, #fff5f5, #fed7d7);
+  border-left: 4px solid var(--accent);
+  padding: 12px 18px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+  font-weight: 500;
+}
+.exam-focus::before {
+  content: "⚠ EXAM FOCUS / 考试重点: ";
+  color: var(--accent);
+  font-weight: 700;
+}
+section {
+  background: var(--card);
+  margin: 24px 0;
+  padding: 36px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+section h2 {
+  color: var(--primary);
+  font-size: 1.6em;
+  border-bottom: 3px solid var(--secondary);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+h3 {
+  color: var(--secondary);
+  font-size: 1.25em;
+  margin: 24px 0 12px;
+}
+h4 { color: #4a5568; margin: 16px 0 8px; font-size: 1.05em; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.95em;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  text-align: left;
+}
+th { background: #edf2f7; font-weight: 600; }
+tr:nth-child(even) { background: #f8fafc; }
+ul, ol { padding-left: 24px; margin: 8px 0; }
+li { margin: 4px 0; }
+.formula {
+  background: #edf2f7;
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+  margin: 12px 0;
+  border-radius: 8px;
+  font-family: 'Cambria Math', 'Times New Roman', serif;
+  font-size: 1.1em;
+  text-align: center;
+}
+.bilingual {
+  color: #718096;
+  font-size: 0.92em;
+  font-style: italic;
+}
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+.comparison-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.comparison-card h4 { margin-top: 0; }
+.pros { border-left: 3px solid #38a169; }
+.cons { border-left: 3px solid #e53e3e; }
+.past-exam {
+  background: #fffff0;
+  border: 1px solid #ecc94b;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.past-exam::before {
+  content: "Past Exam Question / 历年真题";
+  display: block;
+  font-weight: 700;
+  color: #b7791f;
+  margin-bottom: 8px;
+}
+.key-point {
+  background: #ebf8ff;
+  border-left: 4px solid var(--secondary);
+  padding: 12px 18px;
+  margin: 12px 0;
+  border-radius: 0 8px 8px 0;
+}
+.tag {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 0.75em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.toc-item {
+  background: #edf2f7;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-left: 3px solid var(--secondary);
+}
+.toc-item a { color: var(--primary); text-decoration: none; font-weight: 600; }
+.toc-item a:hover { text-decoration: underline; }
+.toc-item .bilingual { display: block; margin-top: 2px; }
+footer {
+  text-align: center;
+  padding: 32px;
+  color: #a0aec0;
+  font-size: 0.9em;
+}
+.src {
+  display: inline-block;
+  background: #e2e8f0;
+  color: #4a5568;
+  font-size: 0.72em;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 4px;
+  font-style: normal;
+  font-weight: 400;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.src::before { content: "📄 "; font-size: 0.9em; }
+.src-block {
+  color: #718096;
+  font-size: 0.8em;
+  margin-top: 4px;
+  font-style: italic;
+}
+.src-block::before { content: "📄 Source: "; font-weight: 600; font-style: normal; }
+@media (max-width: 768px) {
+  section { padding: 20px; }
+  .comparison-grid { grid-template-columns: 1fr; }
+  header h1 { font-size: 1.6em; }
+  nav a { padding: 10px 12px; font-size: 0.8em; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>ELEC6095 Smart Grid</h1>
+    <p>Comprehensive Final Exam Review / 期末复习全面总结</p>
+    <p style="margin-top:8px;opacity:0.8">HKU Department of Electrical and Electronic Engineering</p>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <a href="#toc">Overview / 目录</a>
+    <a href="#ch1">RE Topologies / 可再生能源</a>
+    <a href="#ch2">Wind Power / 风能</a>
+    <a href="#ch3">Challenges / 挑战</a>
+    <a href="#ch4">Demand Response / 需求响应</a>
+    <a href="#ch5">Communication / 通信</a>
+    <a href="#ch6">DG & Grid Connection / 分布式发电</a>
+    <a href="#ch7">Islanding / 孤岛</a>
+    <a href="#ch8">Energy Storage / 储能</a>
+    <a href="#ch9">Smart Grid / 智能电网</a>
+    <a href="#ch10">Past Exams / 历年真题</a>
+    <a href="#ch11">RE Issues / RE问题</a>
+    <a href="#ch12">Intermittency / 间歇性</a>
+    <a href="#ch13">Anti-islanding Detail / 反孤岛详解</a>
+    <a href="#ch14">IDAPS / 自愈电网</a>
+    <a href="#ch15">PV & Load Mgmt / PV负荷管理</a>
+    <a href="#ch16">Smart Meter+HAN / 智能电表</a>
+    <a href="#ch17">Case Study / 案例</a>
+    <a href="#ch18">DG Impacts / DG影响</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- TABLE OF CONTENTS -->
+<section id="toc">
+  <h2>Exam Focus Overview / 考试重点概览</h2>
+  <div class="exam-focus">
+    Based on the professor's review session, the following topics are confirmed exam content. This year there are NO multiple choice questions in Section A (unlike some previous years). Ensure you understand all topics below thoroughly.
+    <br><span class="bilingual">根据老师的复习课，以下内容为确认的考试重点。今年Section A没有选择题。请确保全面理解以下所有专题。</span>
+  </div>
+
+  <h3>Source Abbreviations / 资料来源缩写 <span class="src">p.XX = slide page number</span></h3>
+  <table style="font-size:0.88em">
+    <tr><th>Abbreviation / 缩写</th><th>Full File Name / 完整文件名</th><th>Topic / 主题</th></tr>
+    <tr><td><span class="src" style="margin:0">Intro 2026</span></td><td>Intro 2026.pdf (65 pages)</td><td>Course overview + RE topologies / 课程概述+RE类型</td></tr>
+    <tr><td><span class="src" style="margin:0">Modern Grid</span></td><td>Modern Grid Development.pdf (64 pages)</td><td>History + Smart Grid overview / 历史+智能电网概述</td></tr>
+    <tr><td><span class="src" style="margin:0">Challenges</span></td><td>Challenges in Power Grid.pdf (65 pages)</td><td>Power system operation + RE impacts / 电力系统运行+RE影响</td></tr>
+    <tr><td><span class="src" style="margin:0">Demand Response</span></td><td>Demand Response.pdf (87 pages)</td><td>DR types + Smart meters + HAN / DR类型+智能电表+HAN</td></tr>
+    <tr><td><span class="src" style="margin:0">Communication</span></td><td>Communication.pdf (53 pages)</td><td>SG communication + PMU/WAMS / 通信+PMU/WAMS</td></tr>
+    <tr><td><span class="src" style="margin:0">Grid connection</span></td><td>Grid connection.pdf (70 pages)</td><td>DG connection + Anti-islanding / DG并网+反孤岛</td></tr>
+    <tr><td><span class="src" style="margin:0">Intermittency</span></td><td>Intermittency.pdf (73 pages)</td><td>RE intermittency + Smart inverter + PSAI / 间歇性+智能逆变器+PSAI</td></tr>
+    <tr><td><span class="src" style="margin:0">DG Smart Grid</span></td><td>DG Smart Grid.pdf (68 pages)</td><td>New Mexico case + IDAPS + DG impacts / 案例+IDAPS+DG影响</td></tr>
+    <tr><td><span class="src" style="margin:0">Energy Storage</span></td><td>Energy Storage.pdf (61 pages)</td><td>All storage technologies + Applications / 储能技术+应用</td></tr>
+    <tr><td><span class="src" style="margin:0">PV load management</span></td><td>PV load management.pdf (78 pages)</td><td>PV characteristics + MPPT + Load mgmt / PV特性+MPPT+负荷管理</td></tr>
+    <tr><td><span class="src" style="margin:0">Paper-IETPS2017</span></td><td>Full paper - IETPS2017.pdf</td><td>Intermittency + ICT + PSAI research paper</td></tr>
+    <tr><td><span class="src" style="margin:0">Paper-Lam Lo Lai</span></td><td>Lam Lo Lai fullpaper.pdf</td><td>BIPV + BMS + Load management research paper</td></tr>
+    <tr><td><span class="src" style="margin:0">Local experience</span></td><td>Local experience.pdf</td><td>HK PV grid connection testing paper</td></tr>
+    <tr><td><span class="src" style="margin:0">6095期末考试重点</span></td><td>6095期末考试重点.doc</td><td>Professor's exam review session / 老师考试重点</td></tr>
+    <tr><td><span class="src" style="margin:0">20XX</span></td><td>2017.pdf ~ 2025.pdf</td><td>Past exam papers / 历年试卷</td></tr>
+  </table>
+
+  <div class="toc-grid">
+    <div class="toc-item"><a href="#ch1">1. Renewable Energy Topologies</a><span class="bilingual">可再生能源类型与基本原理</span></div>
+    <div class="toc-item"><a href="#ch2">2. Wind Power (Key Focus!)</a><span class="bilingual">风力发电（重中之重！）</span></div>
+    <div class="toc-item"><a href="#ch3">3. Challenges & Intermittency</a><span class="bilingual">电网挑战与间歇性问题</span></div>
+    <div class="toc-item"><a href="#ch4">4. Demand Response</a><span class="bilingual">需求响应（激励型与分时型）</span></div>
+    <div class="toc-item"><a href="#ch5">5. Communication for Smart Grid</a><span class="bilingual">智能电网通信基础设施</span></div>
+    <div class="toc-item"><a href="#ch6">6. DG & Grid Connection</a><span class="bilingual">分布式发电与并网方式</span></div>
+    <div class="toc-item"><a href="#ch7">7. Islanding & Anti-islanding</a><span class="bilingual">孤岛效应与反孤岛保护（含PSAI）</span></div>
+    <div class="toc-item"><a href="#ch8">8. Energy Storage Applications</a><span class="bilingual">储能系统在四大领域的应用</span></div>
+    <div class="toc-item"><a href="#ch9">9. Smart Grid Technologies</a><span class="bilingual">智能电网核心技术（PMU/WAMS/IDAPS等）</span></div>
+    <div class="toc-item"><a href="#ch10">10. Past Exam Questions</a><span class="bilingual">历年考题分析与高频考点</span></div>
+    <div class="toc-item"><a href="#ch11">11. RE Issues & SG Solutions</a><span class="bilingual">高渗透率RE问题与SG解决方案（作业1）</span></div>
+    <div class="toc-item"><a href="#ch12">12. Intermittency Detailed</a><span class="bilingual">间歇性详细分析（三个时间尺度）</span></div>
+    <div class="toc-item"><a href="#ch13">13. Anti-islanding Methods</a><span class="bilingual">反孤岛检测方法详解（含PSAI机制）</span></div>
+    <div class="toc-item"><a href="#ch14">14. IDAPS Self-Healing</a><span class="bilingual">IDAPS自愈电网（MAS架构+决策冲突）</span></div>
+    <div class="toc-item"><a href="#ch15">15. PV & Load Management</a><span class="bilingual">PV系统与负荷管理（MPPT+充电模式）</span></div>
+    <div class="toc-item"><a href="#ch16">16. Smart Meter, HAN, Appliances</a><span class="bilingual">智能电表+家庭网络+智能家电+动态电价</span></div>
+    <div class="toc-item"><a href="#ch17">17. New Mexico Case Study</a><span class="bilingual">新墨西哥实际案例（uEMS+DR级别）</span></div>
+    <div class="toc-item"><a href="#ch18">18. DG Distribution Impacts</a><span class="bilingual">DG对配电网5大问题与DC配电</span></div>
+  </div>
+</section>
+
+<!-- CHAPTER 1: RENEWABLE ENERGY TOPOLOGIES -->
+<section id="ch1">
+  <h2>1. Renewable Energy Topologies / 可再生能源类型<span class="tag">EXAM</span></h2>
+
+  <div class="exam-focus">
+    The professor emphasized: "Have a basic idea about different types of renewables, their characteristics and basic principles."
+    <br><span class="bilingual">老师强调：了解不同类型可再生能源的基本特征和原理即可。</span>
+  </div>
+
+  <h3>1.1 Definition of Renewable Energy / 可再生能源定义 <span class="src">Intro 2026 p.26</span></h3>
+  <p><strong>IEA Definition:</strong> Renewable energy resources are those "derived from natural processes" and "replenished at a faster rate than they are consumed."</p>
+  <p class="bilingual">国际能源署定义：可再生能源是"源于自然过程"且"补充速度快于消耗速度"的能源。</p>
+  <p>Includes: electricity and heat derived from <strong>solar, wind, ocean, hydropower, biomass, geothermal resources</strong>, and biofuels/hydrogen derived from renewable resources.<br><span class="bilingual">包括：来自太阳能、风能、海洋能、水力、生物质、地热资源的电力和热力，以及来自可再生资源的生物燃料和氢。</span></p>
+
+  <h3>1.2 Classification of Energy Sources / 能源分类 <span class="src">Intro 2026 p.27</span></h3>
+  <table>
+    <tr><th>Primary Energy / 一次能源</th><th>Type / 类型</th><th>Secondary Energy / 二次能源</th></tr>
+    <tr><td>Crude oil, Coal, Natural gas<br>原油、煤、天然气</td><td>Non-renewable / 不可再生</td><td>Fuel oil, gasoline, electricity<br>燃料油、汽油、电力</td></tr>
+    <tr><td>Natural uranium / 天然铀</td><td>Non-renewable / 不可再生</td><td>Electricity (nuclear) / 电力（核能）</td></tr>
+    <tr><td>Solar / 太阳能</td><td>Renewable / 可再生</td><td>PV electricity, thermal heat / 光伏电力、热能</td></tr>
+    <tr><td>Wind / 风能</td><td>Renewable / 可再生</td><td>Mechanical work, electricity / 机械功、电力</td></tr>
+    <tr><td>Falling/flowing water / 落水/流水</td><td>Renewable / 可再生</td><td>Hydropower, tidal, wave electricity / 水力、潮汐、波浪电力</td></tr>
+    <tr><td>Biomass / 生物质</td><td>Renewable / 可再生</td><td>Heat, fuel, electricity / 热、燃料、电力</td></tr>
+    <tr><td>Geothermal / 地热</td><td>Renewable / 可再生</td><td>Heat, electricity / 热、电力</td></tr>
+  </table>
+
+  <h3>1.3 Hydropower / 水力发电 <span class="src">Intro 2026 p.29-31</span></h3>
+  <p><strong>Driving force:</strong> The hydrologic cycle (sun evaporates water → clouds → precipitation at high elevation → potential energy → kinetic energy).</p>
+  <p class="bilingual">驱动力：水循环（太阳蒸发水→云→高海拔降水→势能→动能）。</p>
+  <div class="formula">
+    P<sub>m</sub> = η · ρ · g · Q · H<br>
+    <small>η = turbine efficiency / 涡轮效率, ρ = water density / 水密度 (1000 kg/m³), g = 9.81 m/s², Q = flow rate / 流量 (m³/s), H = effective head / 有效水头 (m)</small>
+  </div>
+  <p>Best turbine efficiency: 80-90%+. Micro-hydro (<100kW): 60-80% efficient.<br><span class="bilingual">最佳涡轮效率：80-90%+。微水力(<100kW)：60-80%。</span></p>
+
+  <h3>1.4 Solar Energy / 太阳能 <span class="src">Intro 2026 p.51-58</span></h3>
+  <h4>Solar Thermal / 太阳能热利用 <span class="src">Intro 2026 p.51-53</span></h4>
+  <p>Extracting heat energy directly from sunlight. Most common: domestic hot water heating.<br><span class="bilingual">直接从阳光中提取热能。最常见应用：家用热水加热。</span></p>
+  <div class="formula">
+    Q<sub>hw</sub> = V<sub>hc</sub> × C<sub>w</sub> × Δθ<br>
+    <small>Q<sub>hw</sub> = daily heat requirement (MJ), V<sub>hc</sub> = daily hot water consumption (m³), C<sub>w</sub> = 4.2 MJ/m³/°C, Δθ = temperature difference (°C)</small>
+  </div>
+
+  <h4>Concentrated Solar Power (CSP) / 聚光太阳能 <span class="src">Intro 2026 p.54-56</span></h4>
+  <p>Four main technologies: Solar Tower, Parabolic Trough, Parabolic Dish, Compact Linear Fresnel Reflectors.<br><span class="bilingual">四种主要技术：太阳塔、抛物线槽、抛物线碟、紧凑型线性菲涅尔反射器。</span></p>
+  <p>Process: Reflect sunlight → Concentrate in collector → Heat molten salt → Store → Heat exchanger → Steam engine → Generator.<br><span class="bilingual">过程：反射阳光→集热器聚光→加热熔盐→储存→换热器→蒸汽机→发电机。</span></p>
+
+  <h4>Photovoltaic (PV) / 光伏 <span class="src">Intro 2026 p.57</span></h4>
+  <p>Uses semiconductor materials (e.g., Silicon) to generate direct current under sunlight. First PV cell: 1954. Now widely used for rooftop grid-supplementing.</p>
+  <p class="bilingual">利用半导体材料（如硅）在阳光下产生直流电。第一个PV电池：1954年。现广泛用于屋顶并网。</p>
+
+  <h3>1.5 Biomass / 生物质能 <span class="src">Intro 2026 p.40-42</span></h3>
+  <p>Six processing methods:</p>
+  <ol>
+    <li><strong>Direct combustion</strong> → power / 直接燃烧→发电</li>
+    <li><strong>Anaerobic digestion</strong> → methane-rich gas / 厌氧消化→富甲烷气体</li>
+    <li><strong>Fermentation</strong> → alcohols / 发酵→醇类</li>
+    <li><strong>Oil extraction</strong> → biodiesel / 油脂提取→生物柴油</li>
+    <li><strong>Pyrolysis</strong> → biochar, gas, oils / 热解→生物炭、气体、油</li>
+    <li><strong>Gasification</strong> → syngas (CO + H₂) / 气化→合成气</li>
+  </ol>
+  <div class="key-point">Net release of CO₂ is theoretically zero — plants absorb CO₂ during growth, release it during combustion. / 理论上CO₂净释放为零。</div>
+
+  <h3>1.6 Tidal Power / 潮汐能 <span class="src">Intro 2026 p.43-47</span></h3>
+  <p>Uses solar and lunar gravitational attraction producing high/low tides twice daily. Works by building a barrage to contain water after high tide; water passes through turbine at low tide.<br><span class="bilingual">利用太阳和月球引力每天产生两次高低潮。建造堰坝在涨潮后蓄水；退潮时水通过涡轮发电。</span></p>
+  <div class="comparison-grid">
+    <div class="comparison-card pros">
+      <h4>Advantages / 优点</h4>
+      <ul>
+        <li>Most reliable RE source (not affected by climate change) / 最可靠的可再生能源</li>
+        <li>Unaffected by weather; predictable currents / 不受天气影响，可预测</li>
+        <li>No visual or noise pollution / 无视觉或噪音污染</li>
+        <li>Water is ~400× more powerful than wind / 水的能量密度是风的~400倍</li>
+      </ul>
+    </div>
+    <div class="comparison-card cons">
+      <h4>Disadvantages / 缺点</h4>
+      <ul>
+        <li>Possible effects on sea mammals / 可能影响海洋哺乳动物</li>
+        <li>Very location specific / 非常依赖地理位置</li>
+        <li>Infant technology / 技术仍在发展中</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>1.7 Geothermal Energy / 地热能 <span class="src">Intro 2026 p.48-50</span></h3>
+  <p>Comes from hot rocks and liquids produced by volcanic activity. Geothermal heat flow is independent of daily/seasonal influences — <strong>no intermittency!</strong></p>
+  <p class="bilingual">来自火山活动产生的热岩和液体。地热热流不受日/季变化影响——无间歇性！</p>
+  <div class="comparison-grid">
+    <div class="comparison-card pros">
+      <h4>Advantages / 优点</h4>
+      <ul>
+        <li>Consistent energy output (no intermittency) / 持续能源输出（无间歇性）</li>
+        <li>Helps stabilize electricity grids / 有助于稳定电网</li>
+        <li>Direct and efficient heating capabilities / 直接高效的供热能力</li>
+      </ul>
+    </div>
+    <div class="comparison-card cons">
+      <h4>Disadvantages / 缺点</h4>
+      <ul>
+        <li>Slower adoption rate / 推广速度较慢</li>
+        <li>High initial investment costs / 初始投资成本高</li>
+        <li>Limited geological data / 地质数据有限</li>
+        <li>Shortage of skilled workforce / 缺乏熟练工人</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>1.8 Considerations for Applying RE / 应用RE的考虑因素 <span class="src">Intro 2026 p.59</span></h3>
+  <ol>
+    <li><strong>Land use / 土地使用</strong> — PV and wind require large areas (expensive in urban areas)<br><span class="bilingual">PV和风电需要大面积土地（城市地区成本高）</span></li>
+    <li><strong>Location dependence / 地理依赖性</strong> — Hydro, tidal, geothermal depend on local resources<br><span class="bilingual">水力、潮汐、地热取决于当地资源</span></li>
+    <li><strong>High density buildings / 高密度建筑</strong> — limit solar access; need city planning<br><span class="bilingual">限制太阳能获取；需要城市规划保障太阳能使用权</span></li>
+    <li><strong>Visual and noise nuisance / 视觉和噪音影响</strong> — wind turbine noise, PV glare<br><span class="bilingual">风力涡轮机噪音、PV眩光</span></li>
+    <li><strong>Costs dropping / 成本持续下降</strong> — especially for large-scale applications<br><span class="bilingual">尤其是大规模应用的成本持续下降</span></li>
+  </ol>
+</section>
+
+<!-- CHAPTER 2: WIND POWER -->
+<section id="ch2">
+  <h2>2. Wind Power (Key Focus!) / 风力发电（重中之重！）<span class="tag">EXAM CRITICAL</span></h2>
+
+  <div class="exam-focus">
+    The professor emphasized: "We talk so much about wind power... Wind power is VERY IMPORTANT. You need to understand that wind power's mechanical power is proportional to the CUBE of wind speed. Pay attention to the wind power curve."
+    <br><span class="bilingual">老师强调：风力发电非常重要！必须理解风力的机械功率与风速的立方成正比。注意风力功率曲线。</span>
+  </div>
+
+  <h3>2.1 Wind Power Derivation / 风力功率推导 <span class="src">Intro 2026 p.33-36</span></h3>
+  <p>Wind is derived indirectly from solar energy — generated by air movement from high pressure to low pressure regions established by thermal gradients.<br><span class="bilingual">风能间接来源于太阳能——由热梯度建立的高气压区向低气压区的空气运动产生。</span></p>
+  <p class="bilingual">风能间接来源于太阳能——由热梯度产生的高低气压区之间的空气运动。</p>
+
+  <div class="formula">
+    K.E. = ½ × mass × velocity²<br><br>
+    Wind volume = A × L, so:<br><br>
+    <strong style="font-size:1.2em">P<sub>w</sub> = ½ρAv³</strong><br><br>
+    <small>ρ = density of air / 空气密度 (kg/m³), A = swept area of wind blades / 叶片扫掠面积 (m²), v = wind speed / 风速 (m/s)</small>
+  </div>
+
+  <div class="key-point">
+    <strong>Critical Concept / 核心概念:</strong> Wind power is proportional to the <strong>CUBE</strong> of wind speed!<br>
+    <span class="bilingual">风力功率与风速的<strong>立方</strong>成正比！如果风速翻倍，功率增加8倍！</span><br>
+    If wind speed doubles → power increases by 2³ = <strong>8 times</strong>!
+  </div>
+
+  <h3>2.2 Wind Turbine Power Curve / 风力涡轮机功率曲线 <span class="src">Intro 2026 p.37</span></h3>
+  <div class="key-point">
+    Three key points on the power curve:<br>
+    <strong>1. Cut-in wind speed (启动风速):</strong> Minimum speed to overcome friction and start generating (~3 m/s for modern turbines).<br>
+    <strong>2. Rated output (额定输出):</strong> Maximum power output of the turbine.<br>
+    <strong>3. Cut-out wind speed (切出风速):</strong> Maximum speed before turbine shuts down for protection from damage.
+  </div>
+  <p>Between cut-in and rated speed: P ∝ v³. Between rated and cut-out: constant at rated power. Above cut-out: turbine stops.<br><span class="bilingual">切入至额定风速之间：P ∝ v³。额定至切出之间：恒功率输出。超过切出风速：涡轮停止。</span></p>
+
+  <h3>2.3 Types of Wind Turbines / 风力涡轮机类型 <span class="src">Challenges p.24-26</span></h3>
+  <table>
+    <tr><th>Feature / 特征</th><th>Fixed-Speed / 定速</th><th>Variable-Speed / 变速 (dominant/主导)</th></tr>
+    <tr><td>Speed control / 速度控制</td><td>Constant rotational speed / 恒定转速</td><td>Adapts rotational speed to wind speed / 转速随风速调节</td></tr>
+    <tr><td>Tip speed ratio / 叶尖速比</td><td>Varies with wind / 随风变化</td><td>Kept constant (optimal) / 保持恒定（最优）</td></tr>
+    <tr><td>Torque handling / 扭矩处理</td><td>Torque varies directly / 扭矩直接变化</td><td>Generator torque fairly constant; variations absorbed by speed changes / 发电机扭矩基本恒定；变化由转速变化吸收</td></tr>
+    <tr><td>Grid connection / 并网方式</td><td>Direct connection / 直接连接</td><td>Through power converter / 通过功率变换器</td></tr>
+    <tr><td>Trend / 趋势</td><td>Legacy / 传统</td><td><strong>Dominant in past decade / 近十年主导</strong></td></tr>
+  </table>
+  <p>Modern trend: Double-fed Induction Generator (DFIG) or Permanent Magnet Generator (PMG) with Full Power Converter (FPC). Variable speed + variable pitch control.<br><span class="bilingual">现代趋势：双馈感应发电机(DFIG)或永磁发电机(PMG)配全功率变流器(FPC)。变速+变桨控制。</span></p>
+
+  <h3>2.4 Wind Power Fluctuations / 风力波动 <span class="src">Challenges p.28-35</span></h3>
+  <ul>
+    <li><strong>Turbulent peak:</strong> Seconds to minutes (gusts) / 湍流峰值：秒到分钟级</li>
+    <li><strong>Diurnal peak:</strong> Daily wind speed variation / 日变化峰值</li>
+    <li><strong>Synoptic peak:</strong> Changing weather patterns (days) / 天气系统变化峰值</li>
+  </ul>
+
+  <h4>Aggregation Effect / 聚合效应 <span class="src">Challenges p.30-35</span></h4>
+  <ul>
+    <li>Increasing turbines within a farm → reduces turbulent peak impact (gusts don't hit all turbines simultaneously)</li>
+    <li>Distributing farms over wide geographic area → reduces diurnal and synoptic peaks</li>
+    <li>Single turbine: output = 0 for 10-20% of time. Large farm: output rarely 0, usually between 5-75% of capacity</li>
+  </ul>
+  <p class="bilingual">增加风场内涡轮机数量→减少湍流影响；在广阔地理区域分布风场→减少日变化和天气系统变化影响。</p>
+
+  <h3>2.5 Capacity Factor / 容量因数 <span class="src">Challenges p.47-48</span></h3>
+  <div class="formula">
+    Capacity Factor (CF) = P<sub>m</sub> / CIC<br>
+    <small>P<sub>m</sub> = actual power production, CIC = total installed capacity</small><br>
+    <small>Utilization time = 8760 × CF (hours/year)</small>
+  </div>
+  <table>
+    <tr><th>Type / 类型</th><th>Typical CF / 典型容量因数</th><th>Utilization (h/year) / 利用小时数</th></tr>
+    <tr><td>Wind (low wind) / 风力(低风速)</td><td>0.25</td><td>~2200</td></tr>
+    <tr><td>Wind (high wind) / 风力(高风速)</td><td>0.40</td><td>~3500</td></tr>
+    <tr><td>CHP / 热电联产</td><td>—</td><td>4000-5000</td></tr>
+    <tr><td>Coal-fired / 燃煤</td><td>—</td><td>5000-6000</td></tr>
+    <tr><td>Nuclear / 核能</td><td>—</td><td>7000-8000</td></tr>
+  </table>
+
+  <div class="past-exam">
+    <strong>2017 A2:</strong> Find the capacity factor for a 500MW generator: runs at 400MW for 3000h, 300MW for 1000h, 330MW for 1500h, shut down for rest of year (8760h).<br>
+    <strong>Solution:</strong> Total energy = 400×3000 + 300×1000 + 330×1500 = 1,200,000 + 300,000 + 495,000 = 1,995,000 MWh<br>
+    Max possible = 500 × 8760 = 4,380,000 MWh<br>
+    CF = 1,995,000 / 4,380,000 = <strong>0.4555 (45.55%)</strong>
+  </div>
+</section>
+
+<!-- CHAPTER 3: CHALLENGES -->
+<section id="ch3">
+  <h2>3. Challenges in Modern Grid & Intermittency / 现代电网挑战与间歇性<span class="tag">EXAM</span></h2>
+
+  <div class="exam-focus">
+    The professor noted: "The challenges we face — the two main types of intermittent renewables connected to the grid: wind and solar PV. How smart grid helps — that's your first assignment."
+    <br><span class="bilingual">老师指出：面临的挑战——两种主要间歇性可再生能源并网：风能和太阳能光伏。智能电网如何帮助解决这些问题。</span>
+  </div>
+
+  <h3>3.1 Power System Operation Basics / 电力系统运行基础 <span class="src">Challenges p.3-4</span></h3>
+  <ul>
+    <li>Schedule and control outputs of generators / 调度和控制发电机输出</li>
+    <li>Maintain balance of generation and load / 维持发电与负荷平衡</li>
+    <li>Minimize production costs / 最小化生产成本</li>
+    <li>Ensure transmission system operates correctly / 确保输电系统正常运行</li>
+  </ul>
+
+  <h4>Load Patterns / 负荷模式 <span class="src">Challenges p.5-7, 10-12</span></h4>
+  <p>Electricity load changes in cycles: <strong>daily</strong> (peak in afternoon), <strong>weekly</strong> (weekday vs weekend), <strong>seasonal</strong> (summer AC peak), <strong>annual</strong>.</p>
+
+  <h4>Generator Categories / 发电机分类 <span class="src">Challenges p.11-14</span></h4>
+  <table>
+    <tr><th>Type / 类型</th><th>Characteristics / 特点</th><th>Usage / 用途</th></tr>
+    <tr><td><strong>Base load</strong> / 基荷</td><td>Expensive to build, cheap to operate (coal, nuclear, hydro)<br>建造成本高，运行成本低（煤、核、水力）</td><td>Run continuously / 连续运行</td></tr>
+    <tr><td><strong>Intermediate load</strong> / 中间负荷</td><td>In-between characteristics / 特性介于两者之间</td><td>Daytime, cycled as needed / 白天运行，按需循环</td></tr>
+    <tr><td><strong>Peaking</strong> / 尖峰负荷</td><td>Cheap to build, expensive to operate (gas turbines)<br>建造成本低，运行成本高（燃气轮机）</td><td>Only during highest demand / 仅在最高需求时</td></tr>
+  </table>
+
+  <h3>3.2 Power System Control / 电力系统控制 <span class="src">Challenges p.18-22</span></h3>
+  <table>
+    <tr><th>Control Type</th><th>Purpose / 目的</th><th>Mechanism / 机制</th></tr>
+    <tr><td><strong>Frequency Control (FC)</strong><br>频率控制</td><td>Real power balance<br>有功功率平衡</td><td>Excess generation → speed ↑ → freq ↑ / 发电过剩→转速↑→频率↑<br>Deficiency → speed ↓ → freq ↓ / 发电不足→转速↓→频率↓<br>Nominal / 标称: 50Hz ± 0.1~0.5 Hz</td></tr>
+    <tr><td><strong>Automatic Generation Control (AGC)</strong><br>自动发电控制</td><td>Restore frequency<br>恢复频率</td><td>Divides load among systems and generators for economy + tie-line control<br>在系统和发电机之间分配负荷以实现经济性+联络线控制</td></tr>
+    <tr><td><strong>Automatic Voltage Regulator (AVR)</strong><br>自动电压调节器</td><td>Reactive power / Voltage control<br>无功功率/电压控制</td><td>Controls excitation system of generators<br>控制发电机励磁系统</td></tr>
+  </table>
+
+  <h3>3.3 Intermittency Problem / 间歇性问题 <span class="src">Intro 2026 p.64; Challenges p.23</span></h3>
+  <div class="key-point">
+    <strong>Intermittency</strong> means the power output from RE varies with natural resources (wind speed, solar irradiance) which change minute by minute and could differ a lot in short periods.<br>
+    <span class="bilingual"><strong>间歇性</strong>指可再生能源的功率输出随自然资源（风速、太阳辐照度）变化，可能在短时间内有很大差异。</span>
+  </div>
+
+  <h4>Controllable vs Uncontrollable Generation / 可控与不可控发电 <span class="src">Challenges p.16-17</span></h4>
+  <div class="comparison-grid">
+    <div class="comparison-card">
+      <h4>Controllable / 可控</h4>
+      <ul>
+        <li>Thermal power plants (coal, oil, gas)</li>
+        <li>Combined cycle gas turbine</li>
+        <li>Hydropower with storage</li>
+      </ul>
+    </div>
+    <div class="comparison-card">
+      <h4>Uncontrollable / 不可控</h4>
+      <ul>
+        <li>Nuclear</li>
+        <li>Run-of-the-river hydro</li>
+        <li>Wind turbine</li>
+        <li>Solar PV</li>
+        <li>CHP (combined heat and power)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>3.4 Impacts of RE on System Operation / 可再生能源对系统运行的影响 <span class="src">Challenges p.43-55</span></h3>
+  <ol>
+    <li><strong>Uncertainties / 不确定性:</strong> Need both load forecasting AND RE generation forecasting<br><span class="bilingual">需要负荷预测和RE发电预测</span></li>
+    <li><strong>More reserves needed / 需要更多备用:</strong> For 10% wind penetration, extra reserve of 2-8% of installed wind capacity needed<br><span class="bilingual">10%风电渗透率需额外2-8%装机容量的备用</span></li>
+    <li><strong>Fast-response reserves / 快速响应备用:</strong> Need fast-response turbines, hydro, or energy storage<br><span class="bilingual">需要快速响应涡轮机、水力或储能</span></li>
+    <li><strong>Frequency control impact / 频率控制影响:</strong> Wind farm output can vary up to 15% of capacity within 15 minutes<br><span class="bilingual">风电场输出可在15分钟内变化达装机容量的15%</span></li>
+    <li><strong>Voltage control impact / 电压控制影响:</strong> Sudden active power changes can cause voltage problems<br><span class="bilingual">有功功率突变可导致电压问题</span></li>
+    <li><strong>Economic dispatch / 经济调度:</strong> RE has no fuel cost but high installation cost; clean energy gets priority (energy-saving dispatch)<br><span class="bilingual">RE无燃料成本但安装成本高；清洁能源获优先调度（节能调度）</span></li>
+  </ol>
+
+  <h3>3.5 Wind Power Penetration / 风电渗透率 <span class="src">Challenges p.45-49</span></h3>
+  <div class="formula">
+    Wind Energy Penetration = Energy produced by wind (annually) / Gross electricity consumption × 100%<br>
+    <small>Low penetration: < 5%; High penetration: > 10%</small>
+  </div>
+  <div class="key-point">
+    <strong>Wind power penetration vs. wind energy penetration:</strong> If a system has 15% wind power penetration, the wind energy penetration is usually <strong>< 15%</strong> (because wind CF < 1, while other generators may have higher CF).<br>
+    <span class="bilingual">风电功率渗透率15%时，风电能量渗透率通常<15%（因为风电容量因数较低）。</span>
+  </div>
+
+  <h3>3.6 How Smart Grid Helps / 智能电网如何帮助 <span class="src">DG Smart Grid p.34; Challenges p.57-60</span></h3>
+  <ul>
+    <li><strong>Better forecasting/nowcasting / 更好的预测:</strong> Predict and manage RE variability / 预测和管理RE变化性</li>
+    <li><strong>Smart inverters / 智能逆变器:</strong> Provide control and automatic grid support / 提供控制和自动电网支持</li>
+    <li><strong>Demand response / 需求响应:</strong> Demand-side contributions to balancing / 需求侧参与平衡</li>
+    <li><strong>Integrated storage / 集成储能:</strong> Smooth short-term variations / 平滑短期变化</li>
+    <li><strong>Real-time awareness / 实时态势感知:</strong> Instrumentation and control across T&D / 跨输配电的仪表和控制</li>
+    <li><strong>Load shifting / 负荷转移:</strong> Smooth out electricity demand / 平滑电力需求</li>
+    <li><strong>Smart appliances / 智能家电:</strong> Automatic response to price/grid signals / 自动响应价格/电网信号</li>
+  </ul>
+</section>
+
+<!-- CHAPTER 4: DEMAND RESPONSE -->
+<section id="ch4">
+  <h2>4. Demand Response / 需求响应<span class="tag">EXAM</span></h2>
+
+  <div class="exam-focus">
+    The professor emphasized: "For demand response, we have many different types. The most two main types are incentive-based and time-based. Make sure you understand the basics about different types of demand response."
+    <br><span class="bilingual">老师强调：需求响应有很多类型。最主要的两种是激励型和分时型。确保理解各类需求响应的基本知识。</span>
+  </div>
+
+  <h3>4.1 Definition / 定义 <span class="src">Demand Response p.8</span></h3>
+  <div class="key-point">
+    <strong>US DOE Definition:</strong> "Changes in electric usage by end-use consumers from their normal consumption patterns in response to changes in the price of electricity over time, or to incentive payments designed to induce lower electricity use at times of high wholesale market prices or when system reliability is jeopardized."<br>
+    <span class="bilingual">美国能源部定义：终端用户根据电价变化或激励支付改变正常用电模式，以在批发市场高价时或系统可靠性受威胁时降低用电量。</span>
+  </div>
+  <p><strong>DR vs DSM:</strong> Demand Response (DR) is a subset of Demand Side Management (DSM). DSM is broader (long-term planning); DR is the dynamic/responsive component.</p>
+
+  <h3>4.2 DR and Electricity Price / 需求响应与电价 <span class="src">Demand Response p.13-14</span></h3>
+  <div class="key-point">
+    <strong>Without DR:</strong> Demand is inelastic (rigid D1) → price = P1 (high, set by most expensive generator).<br>
+    <strong>With DR:</strong> Demand becomes elastic (flexible D2) → consumers shift usage → less need for expensive peaking generators → price = P2 (lower).<br>
+    <span class="bilingual">无DR：需求无弹性→高价。有DR：需求有弹性→消费者转移用电→减少昂贵尖峰发电→低价。</span>
+  </div>
+
+  <h3>4.3 Types of Demand Response / 需求响应类型 <span class="src">Demand Response p.15-23</span></h3>
+  <table>
+    <tr><th colspan="2">Incentive-Based DR / 激励型需求响应</th></tr>
+    <tr><td><strong>Direct Load Control (DLC) / 直接负荷控制</strong></td><td>Utility remotely shuts down/cycles customer equipment (e.g., AC, water heaters) in exchange for incentive payment. Earliest: 1980s.<br><span class="bilingual">电力公司远程关闭/循环客户设备以换取激励支付。</span></td></tr>
+    <tr><td><strong>Interruptible/Curtailable (I/C) Rates / 可中断费率</strong></td><td>Customers agree to reduce load during contingencies for rate discount. Penalized if they don't curtail. For largest customers (200kW-3MW). Not good for 24/7 operations (hospitals, hotels).<br><span class="bilingual">客户同意在紧急情况下减少负荷以获得费率折扣。不适合24/7运营。</span></td></tr>
+    <tr><td><strong>Emergency DR / 紧急需求响应</strong></td><td>Incentive payments for reducing loads during reliability events. Curtailment is <strong>voluntary</strong> — no penalty. Cannot accurately forecast curtailment amount.<br><span class="bilingual">在可靠性事件期间提供激励。削减是自愿的，无罚款。</span></td></tr>
+    <tr><td><strong>Capacity Market Programs / 容量市场计划</strong></td><td>Customers commit to pre-specified load reductions with <strong>penalties</strong> for non-compliance. Guaranteed payments.<br><span class="bilingual">客户承诺预定负荷削减，不履行则罚款。有保证支付。</span></td></tr>
+    <tr><th colspan="2">Time/Rate-Based DR / 分时型需求响应</th></tr>
+    <tr><td><strong>Time-of-Use (TOU) / 分时电价</strong></td><td>Two or more daily periods (peak/off-peak) with different rates. Higher rate during peak hours. Static price schedule.<br><span class="bilingual">每日分时段（高峰/低谷），不同费率。静态价格表。</span></td></tr>
+    <tr><td><strong>Critical Peak Pricing (CPP) / 关键峰值定价</strong></td><td>Overlay on TOU/flat pricing with real-time prices at times of extreme system peak. Triggered by system contingencies or high wholesale prices. Less predetermined than TOU.<br><span class="bilingual">在TOU基础上叠加极端高峰时的实时价格。</span></td></tr>
+    <tr><td><strong>Real-Time Pricing (RTP) / 实时定价</strong></td><td>Rates vary during the day, directly reflecting wholesale electricity prices. First introduced: California, mid-1980s.<br><span class="bilingual">费率随时变化，直接反映批发电价。</span></td></tr>
+  </table>
+
+  <h3>4.4 Load Shape Objectives / 负荷形状目标 <span class="src">Demand Response p.25-26</span></h3>
+  <table>
+    <tr><th>Objective / 目标</th><th>Description / 描述</th><th>Method / 方法</th></tr>
+    <tr><td><strong>Peak Clipping / 削峰</strong></td><td>Reduce peak load / 减少峰值负荷</td><td>DLC to reduce operating cost<br>直接负荷控制减少运行成本</td></tr>
+    <tr><td><strong>Valley Filling / 填谷</strong></td><td>Increase off-peak usage / 增加低谷用电</td><td>Thermal storage, water heating<br>蓄热、热水器</td></tr>
+    <tr><td><strong>Load Shifting / 负荷转移</strong></td><td>Shift load from peak to off-peak / 从高峰转移到低谷</td><td>Storage heating, coolness storage<br>蓄热、蓄冷</td></tr>
+    <tr><td><strong>Energy Efficiency / 能效</strong></td><td>Reduce overall consumption / 减少总消耗</td><td>Efficient appliances / 高效电器</td></tr>
+    <tr><td><strong>Reliability Response / 可靠性响应</strong></td><td>Fastest, shortest duration response during contingencies / 紧急情况下最快、最短持续时间响应</td><td>Power system contingencies / 电力系统应急</td></tr>
+  </table>
+
+  <h3>4.5 Key Benefits of DR / 需求响应的关键益处 <span class="src">Demand Response p.28-29</span></h3>
+  <ol>
+    <li><strong>Participant financial benefits:</strong> Bill savings and incentive payments / 用户经济收益</li>
+    <li><strong>Market-wide financial benefits:</strong> Reduce costly peaking units, lower wholesale prices / 市场整体经济收益</li>
+    <li><strong>Reliability benefits:</strong> Lower likelihood of loss-of-load / 可靠性提升</li>
+    <li><strong>Market performance:</strong> Mitigate suppliers' market power by lowering demand / 缓解市场垄断力</li>
+    <li><strong>Investment deferral:</strong> Defer building new peak generating units / 推迟新建电厂</li>
+  </ol>
+
+  <h3>4.6 Virtual Power Plant (VPP) / 虚拟电厂 <span class="src">Demand Response p.46-52</span></h3>
+  <p>VPP aggregates small DERs (wind, solar, storage, DR) for market visibility. Small standalone DERs are below market thresholds; VPP enables them to participate in energy markets, balancing markets, and ancillary services.</p>
+  <p class="bilingual">VPP将小型分布式能源（风、光、储能、DR）聚合以达到市场门槛。使小型DER能参与能源市场、平衡市场和辅助服务。</p>
+
+  <div class="past-exam">
+    <strong>High-frequency exam topics / 高频考点:</strong><br>
+    - Describe the purposes and benefits of demand response (2017 A3, 2018 A2b, 2019 A3, 2020 A2, 2021 A1a)<br>
+    - Explain how DR may reduce peak electricity price (2017 A3b)<br>
+    - Peak shaving and valley filling methods (2022 A4, 2023 MC6, 2025 Q6)<br>
+    - DR types and characteristics (2022 A5, 2023 MC5, 2025 Q5)
+  </div>
+</section>
+
+<!-- CHAPTER 5: COMMUNICATION -->
+<section id="ch5">
+  <h2>5. Communication for Smart Grid / 智能电网通信<span class="tag">EXAM</span></h2>
+
+  <div class="exam-focus">
+    The professor emphasized: "Communication is one of the major and required features for smart grid. The traditional grid has four major sectors — generation, transmission, distribution, users — already linked by electrical power flow. The difference is we need to set up the communication network linking them with three major players: operations, markets, and service providers. You need to outline the basic requirements for the communication infrastructure."
+    <br><span class="bilingual">老师强调：通信是智能电网的主要必要特征。传统电网四大环节已通过电力流连接。区别在于需要建立通信网络，连接三个主要参与者：运营、市场和服务提供商。需要概述通信基础设施的基本要求。</span>
+  </div>
+
+  <h3>5.1 Traditional vs Smart Grid Communication / 传统vs智能电网通信 <span class="src">Communication p.3-7</span></h3>
+  <div class="comparison-grid">
+    <div class="comparison-card">
+      <h4>Traditional Grid / 传统电网</h4>
+      <ul>
+        <li>One-way power flow / 单向电力流</li>
+        <li>Basic SCADA monitoring / 基本SCADA监控</li>
+        <li>Supervisory real-time info of plants & substations</li>
+        <li>Transfer instructions from control center</li>
+      </ul>
+    </div>
+    <div class="comparison-card">
+      <h4>Smart Grid = Power Network + Communication Network</h4>
+      <ul>
+        <li><strong>Bi-directional</strong> and real-time communication / 双向实时通信</li>
+        <li>Real-time pricing information / 实时定价信息</li>
+        <li>Demand response & demand management / 需求响应管理</li>
+        <li>Smart appliance control / 智能家电控制</li>
+        <li>Remote fault location, isolation and restoration / 远程故障定位</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>5.2 Communication Requirements / 通信要求 <span class="src">Communication p.8</span></h3>
+  <div class="key-point">
+    Smart Grid communication must be:<br>
+    <strong>Real-time</strong> (实时) | <strong>Reliable</strong> (可靠) | <strong>Scalable</strong> (可扩展) | <strong>Manageable</strong> (可管理) | <strong>Extensible</strong> (可扩展) | <strong>Interoperable</strong> (互操作) | <strong>Secure</strong> (安全) | <strong>Future-proof</strong> (面向未来) | <strong>Cost effective</strong> (经济有效)
+  </div>
+
+  <h3>5.3 Communication Network Architecture / 通信网络架构 <span class="src">Communication p.11-18</span></h3>
+  <table>
+    <tr><th>Network Layer / 网络层</th><th>Scope / 范围</th><th>Function / 功能</th></tr>
+    <tr><td><strong>HAN</strong> (Home Area Network) / 家庭局域网</td><td>Within a home / 家庭内</td><td>Smart appliances ↔ Smart meters ↔ Metering gateway</td></tr>
+    <tr><td><strong>NAN</strong> (Neighborhood Area Network) / 邻域网</td><td>Multiple HANs / 多个家庭</td><td>Metering gateways → Data concentrators (wireless mesh)</td></tr>
+    <tr><td><strong>FAN</strong> (Field Area Network) / 现场局域网</td><td>Distribution level / 配电级</td><td>Field devices, grid energy resources</td></tr>
+    <tr><td><strong>WAN</strong> (Wide Area Network) / 广域网</td><td>Regional/national / 区域/全国</td><td>Control centers ↔ Power plants ↔ Substations</td></tr>
+  </table>
+
+  <h3>5.4 Smart Grid Application Layers / 智能电网应用层 <span class="src">Communication p.15-26</span></h3>
+  <table>
+    <tr><th>Layer / 层</th><th>Components / 组件</th></tr>
+    <tr><td><strong>AMI</strong> (Advanced Metering Infrastructure)</td><td>Smart meters + advanced sensors + monitoring + data management. Two-way communication. Not just AMR (Automatic Meter Reading). Components: Concentrator, AMI Host, WAN, LAN, MDMS.</td></tr>
+    <tr><td><strong>DA</strong> (Distribution Automation)</td><td>GIS, OMS, DMS. Functions: transformer load balancing, voltage regulation, fault isolation, remote switching, capacitor bank switching.</td></tr>
+    <tr><td><strong>SA</strong> (Substation Automation)</td><td>SCADA systems: data acquisition, monitoring, control, archiving, reporting. Standard: IEC 61850.</td></tr>
+  </table>
+
+  <h3>5.5 Communication Technologies / 通信技术 <span class="src">Communication p.28-30</span></h3>
+  <ul>
+    <li>Telephone line communication / 电话线通信</li>
+    <li>Fiber optic communication / 光纤通信</li>
+    <li>Power Line Communication (PLC) / 电力线通信</li>
+    <li>Cellular communication / 蜂窝通信</li>
+    <li>RF mesh / 射频网状网络</li>
+    <li>ZigBee, Wi-Fi, Bluetooth</li>
+    <li>GPRS (General Packet Radio Services)</li>
+    <li>HFC (Hybrid Fiber-Coaxial) / 混合光纤同轴</li>
+  </ul>
+
+  <h3>5.6 PMU & WAMS / 相量测量单元与广域测量系统 <span class="src">Communication p.31-53</span></h3>
+  <div class="exam-focus">
+    PMU and WAMS are frequently tested topics (appeared in 2017, 2018, 2022, 2023, 2025 exams).
+  </div>
+
+  <h4>Phasor Measurement Unit (PMU) / 相量测量单元 <span class="src">Communication p.42-43</span></h4>
+  <ul>
+    <li>Accurately measures current and voltage <strong>phasors</strong> (magnitude + phase angle) / 精确测量电流和电压相量</li>
+    <li>Uses <strong>GPS synchronized</strong> time signals — all data has time stamp / GPS同步时间信号</li>
+    <li>Refresh rate: <strong>30-50 samples/sec</strong> (vs SCADA: 2-5 seconds) / 刷新率远高于SCADA</li>
+    <li>First prototype developed at <strong>Virginia Tech</strong> during 1982-1992 / 第一个原型在弗吉尼亚理工开发</li>
+    <li>Basic component of <strong>WAMS</strong></li>
+  </ul>
+
+  <h4>PMU vs SCADA Comparison / PMU与SCADA对比 <span class="src">Communication p.44</span></h4>
+  <table>
+    <tr><th>Feature</th><th>PMU / WAMS</th><th>SCADA</th></tr>
+    <tr><td>Refresh rate / 刷新率</td><td>30 samples/sec</td><td>2-5 seconds</td></tr>
+    <tr><td>Time synchronization / 时间同步</td><td>All data time-tagged (GPS) / GPS时间戳</td><td>Hard to determine real data sequence / 难以确定时序</td></tr>
+    <tr><td>Communication / 通信</td><td>Compatible with modern comm tech</td><td>Relies on legacy comm tech</td></tr>
+    <tr><td>Analysis type / 分析类型</td><td>Enables response to system <strong>dynamics</strong></td><td>Response to system <strong>static</strong></td></tr>
+  </table>
+
+  <h4>Wide Area Measurement System (WAMS) / 广域测量系统 <span class="src">Communication p.36-39</span></h4>
+  <p>Structure: Multiple PMUs → Phasor Data Concentrators (PDC) → SCADA & WAMS Server</p>
+  <p>Core technologies: Communication, Information, Control, Synchronization, Cyber/Physical Security.</p>
+  <p>Origin: Result of 1965 Northeast US Blackout — commission found utilities lacked real-time system state information.</p>
+
+  <h4>FNET — Frequency Network <span class="src">Communication p.49-53</span></h4>
+  <p>Wide-area frequency measurement system using Frequency Disturbance Recorders (FDR) installed at ordinary 120V outlets. ~80 FDRs in US + 20 worldwide. Relatively inexpensive and simple to install.</p>
+</section>
+
+<!-- CHAPTER 6: DG & GRID CONNECTION -->
+<section id="ch6">
+  <h2>6. Distributed Generation & Grid Connection / 分布式发电与并网<span class="tag">EXAM</span></h2>
+
+  <div class="exam-focus">
+    The professor emphasized: "You need to know the basic definition of DG. And you need to know how to connect DG to the grid — three main ways: synchronous generator, asynchronous generator, and inverter. Nowadays, the dominating way is through inverter. Because we do it through inverter, we can link it up with smart grid. The role of the inverter is very important."
+    <br><span class="bilingual">老师强调：需要了解DG的基本定义。需要知道三种并网方式：同步发电机、异步发电机和逆变器。目前主导方式是逆变器。通过逆变器可以与智能电网连接。逆变器的角色非常重要。</span>
+  </div>
+
+  <h3>6.1 Definition of DG / 分布式发电定义 <span class="src">Grid connection p.3-5</span></h3>
+  <div class="key-point">
+    <strong>DG (Distributed Generation):</strong> A power source close to the end user of electricity (at a home, business, or industrial site). Typically <strong>less than 10MW</strong> in size.<br>
+    <strong>DER (Distributed Energy Resources):</strong> Broader concept, includes DG + demand response + controllable loads + direct load control.<br>
+    <span class="bilingual">DG：靠近终端用户的电源，通常小于10MW。DER：更广泛概念，包括DG+需求响应+可控负荷。</span>
+  </div>
+
+  <h3>6.2 Possible DG Sources / 可能的DG来源 <span class="src">Grid connection p.5-11</span></h3>
+  <ul>
+    <li>Combustion turbines / 燃气轮机</li>
+    <li>Microturbines (30-250 kW; can reach 80% efficiency with CHP) / 微型涡轮机</li>
+    <li>Small wind turbines / 小型风力涡轮机</li>
+    <li>Photovoltaic (PV) systems / 光伏系统</li>
+    <li>Micro-hydropower / 微型水力</li>
+    <li>Fuel cells / 燃料电池</li>
+    <li>Combined Heat and Power (CHP, >80% efficiency) / 热电联产</li>
+  </ul>
+
+  <h3>6.3 Three Main Ways to Connect DG to Grid / 三种主要并网方式 <span class="src">Grid connection p.15-18</span></h3>
+  <table>
+    <tr><th>Method</th><th>Characteristics / 特点</th><th>Concerns / 问题</th></tr>
+    <tr>
+      <td><strong>1. Synchronous Generator / 同步发电机</strong></td>
+      <td>
+        - Established, proven technology / 成熟技术<br>
+        - Proper field & governor control can follow any load<br>
+        - Inherent inertia tolerates step-load changes / 固有惯性
+      </td>
+      <td>
+        - <strong>Easily sustains unintentional islanding</strong> / 易维持非故意孤岛<br>
+        - Interferes with utility overcurrent protection<br>
+        - Excessive voltage harmonics
+      </td>
+    </tr>
+    <tr>
+      <td><strong>2. Asynchronous (Induction) Generator / 异步发电机</strong></td>
+      <td>
+        - Driven slightly faster than synchronous speed<br>
+        - Requires separate excitation source / 需要单独激磁源<br>
+        - Greatly reduces chance of islanding / 大大降低孤岛可能
+      </td>
+      <td>
+        - Self-excitation voltage issue with PFC capacitors<br>
+        - Lower overall efficiency<br>
+        - Reactive power management needed
+      </td>
+    </tr>
+    <tr>
+      <td><strong>3. Electronic Power Inverter / 电力电子逆变器</strong><br><span class="tag">DOMINANT</span></td>
+      <td>
+        - Required for ALL DC or non-power frequency AC sources<br>
+        - DC switched at high frequency (50-100× power freq) → sinusoidal<br>
+        - <strong>Inter-operation with Smart Grid is relatively easy!</strong><br>
+        - <span class="bilingual">所有DC或非工频AC源必须使用逆变器。与智能电网互操作相对容易。</span>
+      </td>
+      <td>
+        - Lower order harmonics (3rd, 5th) may be issues<br>
+        - EMI under certain situations<br>
+        - Anti-islanding needed as built-in function
+      </td>
+    </tr>
+  </table>
+
+  <h3>6.4 Role of Inverter in Grid Connection / 逆变器在并网中的角色 <span class="src">Grid connection p.19</span></h3>
+  <div class="key-point">
+    Functions of power inverters for DG systems / 逆变器功能:<br>
+    1. <strong>Power conversion</strong> from variable DC to fixed AC (following grid V & f) / 功率转换<br>
+    2. <strong>High output power quality</strong> with low THD, flicker, V/f deviation / 高输出电能质量<br>
+    3. <strong>Active and reactive power control</strong> in normal and unusual events / 有功和无功功率控制<br>
+    4. <strong>Interface between Smart Grid operation and DG</strong> / 智能电网与DG的接口
+  </div>
+
+  <h3>6.5 Smart Inverter / 智能逆变器 <span class="src">Intermittency p.40-41</span></h3>
+  <p>Smart inverters can:</p>
+  <ul>
+    <li>Provide grid support functions automatically / 自动提供电网支持</li>
+    <li>Implement <strong>Low Voltage Ride Through (LVRT)</strong> / 低电压穿越</li>
+    <li>Respond to Smart Grid signals / 响应智能电网信号</li>
+    <li>Enable <strong>PSAI-based anti-islanding</strong> / 实现PSAI反孤岛</li>
+    <li>Support demand response commands / 支持需求响应指令</li>
+  </ul>
+
+  <h3>6.6 Low Voltage Ride Through (LVRT) / 低电压穿越 <span class="src">Grid connection p.37-38</span></h3>
+  <div class="key-point">
+    <strong>LVRT</strong> increases immunity against grid voltage disturbances. During a fault in the nearby distribution grid, the inverter with LVRT <strong>doesn't disconnect</strong> from the grid but "rides through" the voltage drop, helping prevent large-scale blackouts. Can also inject reactive current to support the grid within milliseconds.<br>
+    <span class="bilingual">LVRT提高对电网电压扰动的免疫力。故障时不断开而是"穿越"电压跌落，防止大规模停电。可在毫秒内注入无功电流支撑电网。</span>
+  </div>
+
+  <h3>6.7 Conventional Grid vs Smart Grid / 传统电网vs智能电网 <span class="src">Grid connection p.20</span></h3>
+  <table>
+    <tr><th>Feature</th><th>Conventional Grid / 传统电网</th><th>Smart Grid / 智能电网</th></tr>
+    <tr><td>Power flow / 潮流方向</td><td>Unidirectional / 单向</td><td><strong>Bidirectional / 双向</strong></td></tr>
+    <tr><td>Generation / 发电</td><td>Centralized / 集中式</td><td>Centralized + <strong>Distributed</strong> / 集中+分布</td></tr>
+    <tr><td>Grid config / 电网构型</td><td>Radial / 辐射型</td><td><strong>Network / 网络型</strong></td></tr>
+    <tr><td>DER integration / DER集成</td><td>Very rare / 极少</td><td><strong>Frequently / 频繁</strong></td></tr>
+    <tr><td>Sensors / 传感器</td><td>Few / 少</td><td><strong>Numerous / 大量</strong></td></tr>
+    <tr><td>Control / 控制</td><td>Limited, passive / 有限被动</td><td><strong>Pervasive, active / 全面主动</strong></td></tr>
+    <tr><td>Outage recovery / 故障恢复</td><td>Manual / 人工</td><td><strong>Self-reconfiguration / 自重构</strong></td></tr>
+  </table>
+
+  <h3>6.8 DG Impacts on Distribution Network / DG对配电网的影响 <span class="src">DG Smart Grid p.19</span></h3>
+  <ol>
+    <li><strong>False tripping of feeders / 馈线误跳闸:</strong> Sympathetic tripping due to DG short-circuit contribution</li>
+    <li><strong>Reclosing issues / 重合闸问题:</strong> Instantaneous reclose is NOT compatible with DG</li>
+    <li><strong>Reduction of reach / 保护范围缩小:</strong> DG infeed reduces current seen by relay</li>
+    <li><strong>Voltage regulation issues / 电压调节问题:</strong> DG disconnection causes voltage dips</li>
+    <li><strong>Unintentional islanding / 非故意孤岛:</strong> Safety hazard for maintenance workers</li>
+  </ol>
+
+  <div class="past-exam">
+    <strong>Common exam question format:</strong><br>
+    - Draw schematic diagram for PV grid connection (2018 B2b, 2020 B2, 2021 B1)<br>
+    - List major technical requirements for grid connection<br>
+    - Compare synchronous, asynchronous generators, and inverters (2018 B2a, 2022 B2)<br>
+    - Identify the dominating way and its smart grid integration (2022 B2c)
+  </div>
+</section>
+
+<!-- CHAPTER 7: ISLANDING -->
+<section id="ch7">
+  <h2>7. Islanding & Anti-islanding / 孤岛效应与反孤岛保护<span class="tag">EXAM CRITICAL</span></h2>
+
+  <div class="exam-focus">
+    The professor emphasized: "When we talk about grid connection, one major criteria is the anti-islanding requirements. You must explain what islanding is first. In traditional grid, islanding is NOT allowed (anti-islanding). But in smart grid, islanding IS PERMITTED — we deliberately set up islands in extreme conditions. You must tell the difference! In smart grid, we use PSAI-based anti-islanding. Also mention IEEE 1547."
+    <br><span class="bilingual">老师强调：反孤岛是并网的主要要求。必须先解释什么是孤岛。传统电网不允许孤岛（反孤岛）。但智能电网中允许有意孤岛！必须区分两者！智能电网使用PSAI反孤岛。还要提到IEEE 1547。</span>
+  </div>
+
+  <h3>7.1 Definition of Islanding / 孤岛定义 <span class="src">Grid connection p.32</span></h3>
+  <div class="key-point">
+    <strong>Islanding:</strong> "Continued operation of a grid-coupled inverter/generator in cases where the utility grid has been switched off, cut off or the distribution lines have been damaged so that no electric energy is delivered from the utility side."<br>
+    <span class="bilingual">孤岛效应：当电网被切断或损坏、不再从电网侧输送电能时，并网逆变器/发电机仍继续运行的情况。</span>
+  </div>
+  <p><strong>Why is it dangerous?</strong> Maintenance workers may work on the electrical installations assuming no electricity, but the DG is still energizing the local grid — <strong>safety hazard!</strong></p>
+
+  <h3>7.2 Anti-islanding in Traditional Grid / 传统电网中的反孤岛 <span class="src">Grid connection p.30, 41</span></h3>
+  <p>In traditional grids, islanding is <strong>NOT allowed</strong>. Anti-islanding function is a <strong>safety requirement</strong>.</p>
+
+  <h4>Islanding Detection Methods / 孤岛检测方法 <span class="src">Grid connection p.44-53</span></h4>
+  <table>
+    <tr><th>Category</th><th>Method</th><th>Pros / 优点</th><th>Cons / 缺点</th></tr>
+    <tr>
+      <td><strong>Passive / 被动</strong></td>
+      <td>Monitors: voltage (OV/UV), frequency (OF/UF), harmonic distortion, phase jump</td>
+      <td>No power quality degradation / 不影响电能质量</td>
+      <td><strong>Large Non-Detection Zone (NDZ)</strong>; NOT possible to integrate with smart grid / 大检测盲区</td>
+    </tr>
+    <tr>
+      <td><strong>Active / 主动</strong></td>
+      <td>Injects active signal: Active Frequency Drift (AFD), Slip-mode Frequency Shift (SMS), Sandia Frequency Shift (SFS), Current Magnitude Variation</td>
+      <td><strong>Small NDZ</strong> / 小检测盲区</td>
+      <td>Degradation on power quality / 影响电能质量</td>
+    </tr>
+    <tr>
+      <td><strong>Remote / 远程</strong></td>
+      <td>Communication between utility and DG inverters: PLCC, SCADA</td>
+      <td><strong>Can guarantee detection; No PQ degradation</strong> / 可保证检测；不影响电能质量</td>
+      <td>Higher cost / 成本较高</td>
+    </tr>
+  </table>
+
+  <h3>7.3 Anti-islanding in Smart Grid — Key Difference! <span class="src">Intermittency p.50, 53; 6095期末考试重点</span></h3>
+  <div class="key-point" style="background: #fff5f5; border-left-color: var(--accent);">
+    <strong>CRITICAL DIFFERENCE / 关键区别:</strong><br>
+    <strong>Traditional Grid:</strong> Islanding is <strong>NOT allowed</strong>. Anti-islanding always active. / 传统电网：不允许孤岛，反孤岛始终开启。<br>
+    <strong>Smart Grid:</strong> <strong>Intentional islanding IS PERMITTED</strong> in extreme conditions! We deliberately set up islands (microgrids) for self-healing. / 智能电网：极端条件下允许有意孤岛！
+  </div>
+
+  <h4>PSAI-based Anti-islanding / PSAI反孤岛 <span class="src">Intermittency p.38, 53; Paper-IETPS2017</span></h4>
+  <div class="key-point">
+    <strong>PSAI = Permissive Signal-based Anti-Islanding</strong><br>
+    In smart grid operation, the inverter <strong>will NOT go into anti-islanding function UNTIL it receives the permissive signal from the Smart Grid</strong>. Without the permissive signal, anti-islanding is NOT triggered.<br><br>
+    <span class="bilingual">PSAI = 许可信号反孤岛。在智能电网中，逆变器在收到智能电网的许可信号之前，不会进入反孤岛功能。没有许可信号，反孤岛不会触发。</span><br><br>
+    This means:<br>
+    - When smart grid sends permissive signal → normal anti-islanding operation (disconnect) / 收到许可信号→正常反孤岛（断开）<br>
+    - When smart grid does NOT send signal → inverter stays connected → <strong>intentional island allowed!</strong> / 未收到信号→逆变器保持连接→允许有意孤岛！<br>
+    - This allows the smart grid to dynamically control whether islanding is permitted / 智能电网动态控制是否允许孤岛
+  </div>
+
+  <h3>7.4 IEEE 1547 / IEEE 1547标准 <span class="src">Grid connection p.36, 42; Intermittency p.50-51</span></h3>
+  <p><strong>IEEE 1547</strong> (Standard for Interconnecting Distributed Resources with Electric Power Systems) specifies:</p>
+  <ul>
+    <li>Voltage protection requirements (over/under voltage trip times)</li>
+    <li>Frequency protection requirements</li>
+    <li>Anti-islanding requirements</li>
+    <li>Power quality requirements (harmonics, DC injection)</li>
+    <li>LVRT capability requirements</li>
+  </ul>
+  <table>
+    <tr><th>Protection / 保护</th><th>Condition / 条件</th><th>Max Trip Time / 最大跳闸时间</th></tr>
+    <tr><td>Over-voltage / 过压</td><td>V > 110%</td><td>1 second</td></tr>
+    <tr><td>Over-voltage / 过压</td><td>V > 120%</td><td>0.16 second</td></tr>
+    <tr><td>Under-voltage / 欠压</td><td>V < 70%</td><td>2 seconds</td></tr>
+    <tr><td>Under-voltage / 欠压</td><td>V < 45%</td><td>0.16 second</td></tr>
+  </table>
+
+  <h3>7.5 IDAPS — Self-Healing Smart Grid / IDAPS——自愈智能电网 <span class="src">DG Smart Grid p.51-66</span></h3>
+  <div class="key-point">
+    <strong>IDAPS = Intelligent Distributed Autonomous Power Systems</strong><br>
+    Smart Grid should have self-healing capabilities that respond appropriately to disruptions and restore the system to a healthy state.<br>
+    <span class="bilingual">IDAPS = 智能分布式自治电力系统。智能电网应具有自愈能力，对中断做出适当响应并将系统恢复到健康状态。</span>
+  </div>
+  <p>Key features of IDAPS:</p>
+  <ul>
+    <li>Automated fault detection, isolation, and service restoration / 自动故障检测、隔离和服务恢复</li>
+    <li>Can operate as intentional island (microgrid) during outages / 故障时可作为有意孤岛运行</li>
+    <li>Distributed decision-making with coordination / 分布式决策与协调</li>
+    <li>Conflict resolution between Local and Global decision-making / 本地与全局决策冲突解决</li>
+  </ul>
+
+  <div class="past-exam">
+    <strong>This is one of the MOST frequently tested topics / 最高频考点之一:</strong><br>
+    - Define islanding and anti-islanding (2017 B2, 2019 B2, 2021 B2, 2022 B2)<br>
+    - IDAPS structure and operation (2017 B3, 2019 B3, 2021 B3, 2022 B4)<br>
+    - Difference between traditional and smart grid anti-islanding (2019 B2, 2021 B2b)<br>
+    - PSAI-based anti-islanding integrated with smart grid (2021 B2b)<br>
+    - LVRT definition and significance (2022 B3, 2023 B2)
+  </div>
+</section>
+
+<!-- CHAPTER 8: ENERGY STORAGE -->
+<section id="ch8">
+  <h2>8. Energy Storage Systems / 储能系统<span class="tag">EXAM</span></h2>
+
+  <div class="exam-focus">
+    The professor emphasized: "Energy storage — you should be able to tell about various application scenarios, e.g., when it's applied in generation, transmission, distribution, and users. Talk about different applications in the four main sectors."
+    <br><span class="bilingual">老师强调：储能——需要能够讲述各种应用场景，如在发电、输电、配电和用户四大领域中的不同应用。</span>
+  </div>
+
+  <h3>8.1 Overview / 概述 <span class="src">Energy Storage p.3</span></h3>
+  <p>Energy storage adds <strong>flexibility</strong> to smart grids by dealing with variability and unpredictability of renewables.</p>
+  <div class="comparison-grid">
+    <div class="comparison-card">
+      <h4>Bulk Storage / 大规模储能</h4>
+      <p>Output: Megawatts over hours<br>Examples: PHES, CAES</p>
+    </div>
+    <div class="comparison-card">
+      <h4>Distributed Storage / 分布式储能</h4>
+      <p>Output: kW to MW over ms to minutes<br>Examples: Li-ion, flywheels, supercapacitors</p>
+    </div>
+  </div>
+
+  <h3>8.2 Energy Storage Technologies / 储能技术分类 <span class="src">Energy Storage p.4</span></h3>
+
+  <h4>A. Mechanical Energy Storage / 机械储能 <span class="src">Energy Storage p.5-17</span></h4>
+  <table>
+    <tr><th>Technology</th><th>Principle / 原理</th><th>Key Specs / 关键参数</th></tr>
+    <tr>
+      <td><strong>PHES</strong><br>(Pumped Hydro) / 抽水蓄能</td>
+      <td>Pump water to upper reservoir off-peak; release to generate during peak<br><span class="bilingual">低谷抽水至上水库；高峰放水发电</span></td>
+      <td>Efficiency / 效率: 70-80%<br>Lifetime / 寿命: 50-60 years / 年<br>Cost / 成本: ~$2000/kW<br>Oldest & largest commercial storage / 最古老最大的商业储能</td>
+    </tr>
+    <tr>
+      <td><strong>CAES</strong><br>(Compressed Air) / 压缩空气储能</td>
+      <td>Store compressed air in underground caverns; mix with gas and expand through turbines<br><span class="bilingual">将压缩空气存储在地下洞穴中</span></td>
+      <td>Efficiency / 效率: 75-80% (adiabatic / 绝热)<br>Cost / 成本: ~$450/kW<br>Site-dependent (salt caverns) / 依赖场地（盐穴）</td>
+    </tr>
+    <tr>
+      <td><strong>Flywheel</strong> / 飞轮储能</td>
+      <td>Accelerate rotor to high speed; maintain as kinetic energy; discharge as generator<br><span class="bilingual">加速转子至高速储存动能</span></td>
+      <td>Advanced / 先进型: 20,000-50,000 rpm<br>High efficiency, fast response / 高效率、快速响应<br>Best for / 最适合: frequency control, spinning reserve / 调频、旋转备用<br>Drawback / 缺点: high self-discharge / 高自放电</td>
+    </tr>
+  </table>
+
+  <h4>B. Electromagnetic Energy Storage / 电磁储能 <span class="src">Energy Storage p.18-22</span></h4>
+  <table>
+    <tr><th>Technology</th><th>Principle / 原理</th><th>Key Specs</th></tr>
+    <tr>
+      <td><strong>Supercapacitor</strong> / 超级电容器</td>
+      <td>Store electric charge electrostatically in parallel plate structure<br><span class="bilingual">以静电方式存储电荷</span></td>
+      <td>Efficiency: <90%<br>Fast charge/discharge<br>Tens of thousands of cycles<br>High self-discharge<br>Good for: frequency support, EV</td>
+    </tr>
+    <tr>
+      <td><strong>SMES</strong><br>(Superconducting Magnetic) / 超导磁储能</td>
+      <td>Store energy in magnetic field of superconducting coil<br><span class="bilingual">在超导线圈的磁场中存储能量</span></td>
+      <td>Efficiency: ~99%<br>Life: >20 years<br>Size: up to 3MW<br>Charge/discharge ratio: 90s:1s<br>Good for: voltage support, PQ</td>
+    </tr>
+  </table>
+
+  <h4>C. Electrochemical Energy Storage / 电化学储能 <span class="src">Energy Storage p.23-39</span></h4>
+  <table>
+    <tr><th>Battery Type</th><th>Efficiency</th><th>Lifetime</th><th>Key Features</th></tr>
+    <tr><td><strong>Lead-Acid / 铅酸</strong></td><td>75-85%</td><td>5 years, 250-1000 cycles</td><td>Oldest type; charge/discharge ratio 5:1</td></tr>
+    <tr><td><strong>NiCd / 镍镉</strong></td><td>60-70%</td><td>10-15 years, 1000-3500 cycles</td><td>Cadmium is very toxic; restricted use</td></tr>
+    <tr><td><strong>NaS (Sodium-Sulphur) / 钠硫</strong></td><td>89%</td><td>2500 cycles (100% DoD)</td><td>High power density; peak-shaving (100kW/15min); PQ (250kW/30s); $810/kW</td></tr>
+    <tr><td><strong>Lithium-ion / 锂离子</strong></td><td>90%</td><td>High cycle life</td><td>Very high energy density; usable range 5-99%</td></tr>
+    <tr><td><strong>Vanadium Redox Flow / 钒液流</strong></td><td>75%</td><td>7-15 years</td><td>Charge/discharge ratio 1:1; modular, scalable</td></tr>
+    <tr><td><strong>ZnBr Flow / 锌溴液流</strong></td><td>80%</td><td>10 years</td><td>Charge/discharge ratio 1:1</td></tr>
+    <tr><td><strong>PSB Flow / 多硫化物溴液流</strong></td><td>75%</td><td>15 years</td><td>Charge/discharge ratio 1:1</td></tr>
+  </table>
+
+  <h4>D. Electric Vehicles (EV) / 电动汽车 <span class="src">Energy Storage p.42-44</span></h4>
+  <ul>
+    <li>EV batteries can serve as <strong>distributed storage</strong> (V2G: Vehicle-to-Grid) / 可作为分布式储能</li>
+    <li>Can provide: ramp-smoothing, voltage control, frequency regulation while charging / 可提供调频、调压</li>
+    <li>EVs typically charge at night → well suited to absorb wind power (peaks at night) / 夜间充电→适合吸收夜间风电</li>
+    <li>Smart charging via advanced electricity pricing / 智能充电</li>
+  </ul>
+
+  <h3>8.3 Energy Storage Applications by Sector / 储能在四大领域的应用 <span class="src">Energy Storage p.50-61</span></h3>
+  <table>
+    <tr><th>Sector / 领域</th><th>Applications / 应用</th></tr>
+    <tr>
+      <td><strong>Generation / 发电</strong></td>
+      <td>
+        - Smooth RE power fluctuations (e.g., NaS battery with wind farm) / 平滑可再生能源波动<br>
+        - Supply energy for small-sized power grids / 为小型电网供电<br>
+        - Support renewable energy conversion systems / 支持可再生能源转换
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Transmission / 输电</strong></td>
+      <td>
+        - <strong>Frequency control</strong> (faster than generators) / 频率控制（比发电机快）<br>
+        - <strong>Load leveling and peak shaving</strong> / 负荷平衡与削峰<br>
+        - Voltage support / 电压支撑
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Distribution / 配电</strong></td>
+      <td>
+        - Grid frequency and voltage regulation (stabilization, PQ control) / 频率和电压调节<br>
+        - Smoothing of RE power variability (ramp-rate control) / 平滑RE功率变化<br>
+        - Shaving of short-term load peaks / 削减短期负荷峰值<br>
+        - <strong>Back-up power</strong>: short-term islanding of microgrids / 备用电源<br>
+        - Defer distribution system upgrades / 推迟配电系统升级
+      </td>
+    </tr>
+    <tr>
+      <td><strong>End-users / 用户</strong></td>
+      <td>
+        - Provide backup power to prevent outages / 备用电源防止停电<br>
+        - Improve power quality / 改善电能质量<br>
+        - Match electricity supply to load demand / 匹配供需<br>
+        - EV V2G services / 电动汽车V2G服务<br>
+        - Reduce electricity bills via peak shaving / 通过削峰降低电费
+      </td>
+    </tr>
+  </table>
+
+  <div class="past-exam">
+    <strong>High-frequency exam topics / 高频考点:</strong><br>
+    - Energy storage applications in generation, transmission, distribution (2020 A3, 2021 A1b)<br>
+    - Advantages of coordinating distributed energy storages with RE (2019 A2)<br>
+    - Mechanical energy storage types (2022 A7)<br>
+    - Energy storage significance in smart grid (2025 B3)<br>
+    - Types that are commercially available (2023 MC8)<br>
+    - Flow battery characteristics (2023 MC9)
+  </div>
+</section>
+
+<!-- CHAPTER 9: SMART GRID OVERVIEW -->
+<section id="ch9">
+  <h2>9. Smart Grid Technologies Overview / 智能电网核心技术<span class="tag">EXAM</span></h2>
+
+  <h3>9.0 RE Grid Integration — 6 Issues & 4 SG Solutions / RE并网——6大问题与4大SG解决方案 <span class="src">Modern Grid p.41-42</span></h3>
+  <div class="exam-focus">
+    This is a highly concise exam-ready framework from Modern Grid Development PPT p.41-42.
+    <br><span class="bilingual">这是Modern Grid Development PPT第41-42页的精炼考试框架。</span>
+  </div>
+  <div class="key-point">
+    <strong>6 Issues of High RE Penetration / 高RE渗透率的6大问题:</strong> <span class="src">Modern Grid p.41</span><br>
+    1. Intermittent renewable energy, uncontrollable / 可再生能源间歇性，不可控<br>
+    2. Uncertainties in real-time power balance due to intermittent RE / 间歇性RE导致实时功率平衡的不确定性<br>
+    3. Power system security operation problem / 电力系统安全运行问题<br>
+    4. Determine RE penetration level / 确定RE渗透率水平<br>
+    5. Smart demand side management / 智能需求侧管理<br>
+    6. Unpredictable changes in energy demand / 能源需求的不可预测变化
+  </div>
+  <div class="key-point">
+    <strong>4 Smart Grid Solutions for RE / 智能电网应对RE的4大解决方案:</strong> <span class="src">Modern Grid p.42</span><br>
+    1. <strong>Energy Storage / 储能</strong> — smooth fluctuations, frequency control, peak shaving / 平滑波动、调频、削峰<br>
+    2. <strong>System Control and Management / 系统控制与管理</strong> — real-time monitoring, automated dispatch / 实时监控、自动调度<br>
+    3. <strong>Communication Network / 通信网络</strong> — link all sectors, enable coordinated control / 连接所有环节、实现协调控制<br>
+    4. <strong>Demand-side Management / 需求侧管理</strong> — DR programs, smart meters, dynamic pricing / DR计划、智能电表、动态定价
+  </div>
+
+  <h3>9.0b Smart Power Grid Functions / 智能电网功能架构 <span class="src">Modern Grid p.43</span></h3>
+  <p>The Smart Grid connects four domains (Generation, Transmission & Distribution, Customer, Control Center) with the following key components:<br>
+  <span class="bilingual">智能电网连接四大领域（发电、输配电、用户、控制中心），包含以下关键组件：</span></p>
+  <table>
+    <tr><th>Component / 组件</th><th>Description / 描述</th></tr>
+    <tr><td>Demand Response / 需求响应</td><td>Load management via price signals and incentives / 通过价格信号和激励管理负荷</td></tr>
+    <tr><td>Smart Meter / 智能电表</td><td>Two-way metering with communication / 双向计量通信</td></tr>
+    <tr><td>AMI / 高级计量基础设施</td><td>Smart meters + sensors + data management / 智能电表+传感器+数据管理</td></tr>
+    <tr><td>RE Conversion System / RE转换系统</td><td>PV, wind, etc. with grid-connecting inverters / 含并网逆变器的PV、风电等</td></tr>
+    <tr><td>Energy Storage System / 储能系统</td><td>Batteries, PHES, flywheels, etc. / 电池、抽水蓄能、飞轮等</td></tr>
+    <tr><td>Smart Substation / 智能变电站</td><td>IEC 61850 standard automation / IEC 61850标准自动化</td></tr>
+    <tr><td>HVDC / 高压直流输电</td><td>Long-distance high-voltage DC transmission / 远距离高压直流输电</td></tr>
+    <tr><td>PMU / 相量测量单元</td><td>GPS-synchronized phasor measurement / GPS同步相量测量</td></tr>
+    <tr><td>Integrated Communications / 集成通信</td><td>HAN/NAN/WAN linking all domains / 连接所有领域的通信网络</td></tr>
+    <tr><td>Advanced Control / 高级控制</td><td>Automated, distributed decision-making / 自动化分布式决策</td></tr>
+    <tr><td>Improved Interfaces / 改进界面</td><td>Visualization, decision support, AI / 可视化、决策支持、AI</td></tr>
+  </table>
+
+  <h3>9.1 What is a Smart Grid? / 什么是智能电网 <span class="src">Challenges p.58</span></h3>
+  <p>According to FERC (Federal Energy Regulatory Commission), a Smart Grid:</p>
+  <ul>
+    <li><strong>Self-heals / 自愈:</strong> Responds to disruptions automatically / 自动响应中断</li>
+    <li><strong>Motivates and includes the consumer / 激励消费者参与:</strong> DR, smart meters / 需求响应、智能电表</li>
+    <li><strong>Resists attack / 抵御攻击:</strong> Cybersecurity / 网络安全</li>
+    <li><strong>Provides power quality for 21st century needs / 提供满足21世纪需求的电能质量</strong></li>
+    <li><strong>Accommodates all generation and storage options / 容纳所有发电和储能选项</strong></li>
+    <li><strong>Enables markets / 使能市场</strong></li>
+    <li><strong>Optimizes assets and operates efficiently / 优化资产并高效运营</strong></li>
+  </ul>
+
+  <h3>9.2 Three Objectives of New Smart Grid System / 智能电网三大目标 <span class="src">Modern Grid p.15-18</span></h3>
+  <ol>
+    <li><strong>Creating a decentralized control paradigm / 建立去中心化控制范式</strong>
+      <ul>
+        <li>Distributed Intelligence / 分布式智能</li>
+        <li>Edge Computing / 边缘计算</li>
+        <li>Multi-Agent Systems / 多代理系统</li>
+        <li>Self-Healing / 自愈能力</li>
+        <li>Interoperability Standards (IEEE 2030) / 互操作标准</li>
+      </ul>
+    </li>
+    <li><strong>Retooling for low-carbon supplies / 改造为低碳供应</strong>
+      <ul>
+        <li>Bidirectional Power Electronics / 双向电力电子</li>
+        <li>Dynamic Thermal Ratings / 动态热评定</li>
+        <li>Synthetic Inertia / 合成惯性</li>
+        <li>Weather Forecasting Integration / 天气预报集成</li>
+      </ul>
+    </li>
+    <li><strong>New business model promoting efficiency / 促进效率的新商业模式</strong>
+      <ul>
+        <li>Transactive Energy Frameworks / 交易能源框架</li>
+        <li>Value-Stacking / 价值叠加</li>
+        <li>Aggregator Business Models / 聚合商模式</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h3>9.3 Smart Grid Core Technologies / 核心技术 <span class="src">Modern Grid p.43-62</span></h3>
+  <table>
+    <tr><th>Technology / 技术</th><th>Description / 描述</th></tr>
+    <tr><td><strong>Smart Meter / 智能电表</strong></td><td>Records detailed consumption with time-stamps; supports AMR, bi-directional comm, TOU tariff, in-home display, net-metering, remote connect/reconnect, smart appliance control, PQ monitoring. Basic component of AMI.</td></tr>
+    <tr><td><strong>AMI / 高级计量基础设施</strong></td><td>Two-way communication network: smart meters + sensors + monitoring + data management. Not just AMR! Includes: MDMS, concentrators, WAN/LAN.</td></tr>
+    <tr><td><strong>PMU / 相量测量单元</strong></td><td>GPS-synchronized phasor measurement. 30-50 Hz refresh. Time-stamped data. See Chapter 5 for details.</td></tr>
+    <tr><td><strong>WAMS / 广域测量系统</strong></td><td>PMUs → PDC → Control center. Real-time system state monitoring.</td></tr>
+    <tr><td><strong>SCADA / 数据采集与监控</strong></td><td>Data acquisition, monitoring, control, archiving, reporting. Foundation of substation automation.</td></tr>
+    <tr><td><strong>DMS / 配电管理系统</strong></td><td>Network connectivity analysis, state estimation, load flow, Volt-VAR control, fault management, load balancing.</td></tr>
+    <tr><td><strong>Energy Storage / 储能</strong></td><td>Adds flexibility. See Chapter 8 for details.</td></tr>
+    <tr><td><strong>HVDC / 高压直流</strong></td><td>Long-distance high-voltage DC transmission.</td></tr>
+    <tr><td><strong>Smart Inverter / 智能逆变器</strong></td><td>Interface between DG and smart grid. LVRT, PSAI-based anti-islanding.</td></tr>
+  </table>
+
+  <h3>9.4 Smart Customers / 智能用户 <span class="src">Modern Grid p.44</span></h3>
+  <p>Electricity consumers who actively participate through:</p>
+  <ul>
+    <li>Smart technologies (smart meters, appliances, home energy management) / 智能技术（智能电表、家电、家庭能源管理）</li>
+    <li>Responding to price signals and DR programmes / 响应价格信号和DR计划</li>
+    <li>Generating their own electricity ("prosumers") / 自己发电（"产消者"）</li>
+    <li>Adjusting consumption based on grid conditions / 根据电网状况调整用电</li>
+    <li>Participating in energy markets / 参与能源市场</li>
+  </ul>
+
+  <h3>9.5 PV Systems & Load Management / 光伏系统与负荷管理 <span class="src">PV load management p.3-5</span></h3>
+  <h4>PV Electrical Characteristics / PV电气特性</h4>
+  <ul>
+    <li>Current output is directly proportional to photons (solar irradiance W/m²) / 电流输出与太阳辐照度成正比</li>
+    <li>Non-linear I-V characteristics shown in I-V curves / 非线性I-V特性</li>
+    <li>P = I × V; maximum power at MPP (Maximum Power Point) / 最大功率点</li>
+  </ul>
+
+  <h4>Maximum Power Point Tracking (MPPT) / 最大功率点跟踪</h4>
+  <p>Continuous adjustment needed to capture maximum output as environmental conditions change. The MPP (Im, Vm) constantly shifts.</p>
+
+  <h4>Load Shifting / 负荷转移</h4>
+  <p>Involves shifting load from on-peak to off-peak periods. Applications: storage water/space heating, coolness storage. Smart grid enables load shifting through real-time pricing and automated smart appliance control.<br><span class="bilingual">将负荷从高峰转移到低谷。应用：蓄热/蓄冷。智能电网通过实时定价和智能家电自动控制实现负荷转移。</span></p>
+</section>
+
+<!-- CHAPTER 10: PAST EXAM ANALYSIS -->
+<section id="ch10">
+  <h2>10. Past Exam Analysis & Practice / 历年考题分析与练习<span class="tag">EXAM</span></h2>
+
+  <h3>10.1 Exam Format for 2026 / 2026年考试形式 <span class="src">6095期末考试重点; Intro 2026 p.5</span></h3>
+  <div class="key-point">
+    <strong>Important / 重要:</strong> This year there are <strong>NO multiple choice questions / 今年没有选择题</strong> (unlike 2022, 2023, 2025 which had MC in Section A).<br>
+    - Section A: Principles (50%) / 原理部分<br>
+    - Section B: Applications (50%) / 应用部分<br>
+    - Total exam: 60% of final grade<br>
+    - Coursework: 40% (20% each for two assignments)<br>
+    <span class="bilingual">今年没有选择题！A和B两部分各50%。考试占总成绩60%。</span>
+  </div>
+
+  <h3>10.2 Most Frequently Tested Topics / 最高频考点 <span class="src">2017-2025 past papers</span></h3>
+  <table>
+    <tr><th>Topic / 考点</th><th>Years Appeared / 出现年份</th><th>Freq / 频率</th></tr>
+    <tr><td><strong>Smart Grid technologies to accommodate RE / 智能电网技术容纳RE</strong></td><td>2017, 2018, 2019, 2020, 2023</td><td>★★★★★</td></tr>
+    <tr><td><strong>Demand Response benefits & types / 需求响应益处与类型</strong></td><td>2017, 2018, 2019, 2020, 2021, 2022, 2023, 2025</td><td>★★★★★</td></tr>
+    <tr><td><strong>Energy Storage applications / 储能应用</strong></td><td>2018, 2019, 2020, 2021, 2022, 2023, 2025</td><td>★★★★★</td></tr>
+    <tr><td><strong>PV grid connection (schematic + requirements) / PV并网（示意图+要求）</strong></td><td>2017, 2018, 2020, 2021</td><td>★★★★</td></tr>
+    <tr><td><strong>Islanding, Anti-islanding, PSAI / 孤岛、反孤岛、PSAI</strong></td><td>2017, 2019, 2021, 2022, 2023</td><td>★★★★</td></tr>
+    <tr><td><strong>IDAPS self-healing / IDAPS自愈</strong></td><td>2017, 2019, 2021, 2022</td><td>★★★★</td></tr>
+    <tr><td><strong>PMU & WAMS</strong></td><td>2017, 2018, 2022, 2023, 2025</td><td>★★★★</td></tr>
+    <tr><td><strong>DG definition & connection methods / DG定义与连接方式</strong></td><td>2018, 2020, 2022, 2023, 2025</td><td>★★★★</td></tr>
+    <tr><td><strong>RE intermittency & impacts / RE间歇性与影响</strong></td><td>2019, 2020, 2022, 2023, 2025</td><td>★★★★</td></tr>
+    <tr><td><strong>Load shifting/management / 负荷转移/管理</strong></td><td>2018, 2020, 2021, 2025</td><td>★★★</td></tr>
+    <tr><td><strong>LVRT</strong></td><td>2022, 2023</td><td>★★★</td></tr>
+    <tr><td><strong>Wind power characteristics / 风力发电特性</strong></td><td>2019, 2022, 2025</td><td>★★★</td></tr>
+    <tr><td><strong>Capacity factor calculation / 容量因数计算</strong></td><td>2017</td><td>★★</td></tr>
+  </table>
+
+  <h3>10.3 Sample Long Answer Questions with Key Points / 长答题示例与答题要点 <span class="src">2017-2025 past papers</span></h3>
+
+  <div class="past-exam">
+    <strong>Q: Describe smart grid technologies and how they can accommodate more intermittent RE. (15 marks)</strong><br>
+    <strong>Answer structure / 答题框架:</strong>
+    <ol>
+      <li><strong>Identify the problem:</strong> RE (wind, solar) is intermittent and uncontrollable → challenges for real-time power balancing</li>
+      <li><strong>List smart grid technologies:</strong>
+        <ul>
+          <li>Smart meters & AMI → enable two-way communication and real-time pricing</li>
+          <li>Demand response → shift/reduce load to match RE output</li>
+          <li>Energy storage → smooth RE fluctuations, provide reserves</li>
+          <li>PMU & WAMS → real-time monitoring and faster fault detection</li>
+          <li>Smart inverters → LVRT, reactive power support, grid stabilization</li>
+          <li>Advanced forecasting → predict wind/solar output</li>
+          <li>Distribution automation → self-healing, fault isolation</li>
+          <li>Virtual Power Plants → aggregate small DERs for market participation</li>
+        </ul>
+      </li>
+      <li><strong>Explain how each helps:</strong> Link technologies to specific RE challenges (intermittency, voltage, frequency, balancing)</li>
+    </ol>
+  </div>
+
+  <div class="past-exam">
+    <strong>Q: Define islanding. Under what circumstances would smart grid allow intentional island? Describe the steps. (12 marks)</strong><br>
+    <strong>Answer structure / 答题框架:</strong>
+    <ol>
+      <li><strong>Define islanding:</strong> Continued operation of DG when utility grid is disconnected</li>
+      <li><strong>Traditional grid:</strong> Anti-islanding required for safety (protect workers)</li>
+      <li><strong>Smart grid difference:</strong> Intentional islanding IS permitted for:
+        <ul>
+          <li>Extreme weather events / natural disasters</li>
+          <li>Grid outages where microgrid can self-sustain</li>
+          <li>Self-healing operation (IDAPS)</li>
+        </ul>
+      </li>
+      <li><strong>PSAI-based anti-islanding:</strong> Inverter only activates anti-islanding when receiving permissive signal from smart grid</li>
+      <li><strong>Steps to intentional island:</strong>
+        <ul>
+          <li>Smart grid detects extreme condition</li>
+          <li>Smart grid does NOT send permissive signal to inverters</li>
+          <li>DG inverters remain connected; local microgrid operates independently</li>
+          <li>IDAPS manages local supply-demand balance</li>
+          <li>When grid restored, smart grid sends reconnection signal</li>
+        </ul>
+      </li>
+      <li><strong>Reference IEEE 1547</strong> for interconnection standards</li>
+    </ol>
+  </div>
+
+  <div class="past-exam">
+    <strong>Q: Describe energy storage applications in generation, transmission, distribution, and users. (20 marks)</strong><br>
+    <strong>Answer structure / 答题框架:</strong>
+    <ol>
+      <li><strong>Generation:</strong> Smooth RE fluctuations (NaS + wind farm example), supply small grids, support RE conversion</li>
+      <li><strong>Transmission:</strong> Frequency control (faster than generators — show comparison), load leveling, peak shaving, voltage support</li>
+      <li><strong>Distribution:</strong> Grid stabilization (V & f regulation), ramp-rate control, short-term peak shaving, backup power for microgrid islanding, defer system upgrades</li>
+      <li><strong>End-users:</strong> Backup power, improve PQ, match supply-demand, EV V2G, reduce bills via peak shaving</li>
+      <li>Give specific technology examples for each sector (PHES for generation, flywheel for frequency control, Li-ion for distribution, EV for users)</li>
+    </ol>
+  </div>
+
+  <div class="past-exam">
+    <strong>Q: Draw schematic for PV grid connection and list major technical requirements. (20 marks)</strong><br>
+    <strong>Answer structure / 答题框架:</strong>
+    <ol>
+      <li><strong>Draw schematic:</strong> PV Array → DC/DC (MPPT) → DC/AC Inverter → Transformer → AC Grid (380V 50Hz); Include: sensors (V, I, P, Q), DSP controller, protection devices, isolation switch, loads</li>
+      <li><strong>Technical requirements:</strong>
+        <ul>
+          <li>Anti-islanding function (built into inverter)</li>
+          <li>Power quality (THD limits, DC injection limits, power factor)</li>
+          <li>Voltage protection (IEEE 1547: trip times for OV/UV)</li>
+          <li>Frequency protection</li>
+          <li>LVRT capability</li>
+          <li>Synchronization check</li>
+          <li>Safety: lockable isolation switch, warning labels, circuit diagrams</li>
+        </ul>
+      </li>
+      <li><strong>Smart grid difference:</strong> PSAI-based anti-islanding, smart inverter with LVRT, bidirectional communication, demand response integration</li>
+    </ol>
+  </div>
+
+  <h3>10.4 Multiple Choice Key Points (for reference) / 选择题关键知识点 <span class="src">2022-2025 past papers</span></h3>
+  <p>Although this year has no MC, these concepts are fundamental and may appear in essay questions:</p>
+
+  <div class="key-point">
+    <strong>Renewable energy in power grid (wind):</strong> It IS an intermittent source; it is NOT controllable; NOT good for power balancing; NOT good for frequency regulation; it DOES require frequency regulation capability to be connected.<br>
+    <strong>Mitigate wind fluctuation:</strong> Large farm with many turbines; farms at different locations; exchange power with neighboring grids; pump storage; more reserve capacities.<br>
+    <strong>Wind power penetration 15% → wind energy penetration < 15%</strong> (because CF < 1).<br>
+    <strong>NOT used for frequency regulation:</strong> Run-of-the-river hydro, PV panel, wind turbine (without special control).<br>
+    <strong>Frequency regulation tools:</strong> Li-ion battery, flywheel, gas turbine, demand response, EV+V2G.<br>
+    <strong>DR correct statements:</strong> Can be initiated when reliability jeopardized; triggered by HIGH price; hospital is NOT good for interruptible load; CPP is NOT for everyday; TOU IS for everyday; enough DR can defer new peak units.<br>
+    <strong>Peak shaving & valley filling:</strong> Interruptible load, pump storage, DR, CAES, flow battery, virtual peaking capacity.<br>
+    <strong>PMU correct:</strong> Measures V and I phasors; GPS synchronized; time stamped; NOT same as RTU; for dynamic (not static) analysis; first prototype ~3-4 decades ago; basic component of WAMS.
+  </div>
+
+  <h3>10.5 Key Formulas Summary / 关键公式汇总 <span class="src">Intro 2026; Challenges; Grid connection</span></h3>
+  <table>
+    <tr><th>Formula / 公式</th><th>Description / 描述</th></tr>
+    <tr><td class="formula" style="text-align:center">P<sub>m</sub> = η·ρ·g·Q·H</td><td>Hydropower mechanical power / 水力发电机械功率</td></tr>
+    <tr><td class="formula" style="text-align:center"><strong>P<sub>w</sub> = ½ρAv³</strong></td><td>Wind power (proportional to v³!) / 风力功率（与v³成正比！）</td></tr>
+    <tr><td class="formula" style="text-align:center">Q<sub>hw</sub> = V<sub>hc</sub>·C<sub>w</sub>·Δθ</td><td>Solar thermal hot water daily heat requirement / 太阳能热水日热量需求</td></tr>
+    <tr><td class="formula" style="text-align:center">CF = P<sub>actual</sub> / P<sub>capacity</sub></td><td>Capacity Factor / 容量因数</td></tr>
+    <tr><td class="formula" style="text-align:center">P = I × V</td><td>PV power (at MPP for maximum) / PV功率（MPP时最大）</td></tr>
+  </table>
+
+  <h3>10.6 Key Comparisons to Remember / 需记住的关键对比 <span class="src">All course materials</span></h3>
+  <table>
+    <tr><th>Comparison / 对比</th><th>Item A / 项目A</th><th>Item B / 项目B</th></tr>
+    <tr><td>Grid type / 电网类型</td><td>Traditional / 传统: unidirectional, centralized, radial, passive<br>单向、集中、辐射、被动</td><td>Smart / 智能: bidirectional, distributed, network, active<br>双向、分布、网络、主动</td></tr>
+    <tr><td>Islanding policy / 孤岛政策</td><td>Traditional / 传统: NOT allowed<br>不允许（反孤岛始终开启）</td><td>Smart / 智能: intentional islanding permitted (PSAI)<br>允许有意孤岛（PSAI）</td></tr>
+    <tr><td>DG connection / DG并网</td><td>Synchronous/Asynchronous generators (legacy)<br>同步/异步发电机（传统）</td><td>Inverter (dominant, enables smart grid integration)<br>逆变器（主导，支持智能电网集成）</td></tr>
+    <tr><td>Measurement / 测量</td><td>SCADA: 2-5s, no time sync, static analysis<br>2-5秒，无时间同步，静态分析</td><td>PMU/WAMS: 30/s, GPS time sync, dynamic analysis<br>30次/秒，GPS同步，动态分析</td></tr>
+    <tr><td>DR types / DR类型</td><td>Incentive-based / 激励型: DLC, I/C, Emergency, Capacity<br>直接控制、可中断、紧急、容量市场</td><td>Time-based / 分时型: TOU, CPP, RTP<br>分时电价、关键峰值定价、实时定价</td></tr>
+    <tr><td>Storage scale / 储能规模</td><td>Bulk / 大规模: PHES, CAES (MW, hours / 兆瓦，小时)</td><td>Distributed / 分布式: batteries, flywheel, supercap (kW-MW, ms-min / 千瓦-兆瓦，毫秒-分钟)</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 11: ASSIGNMENT 1 TOPIC - RE ISSUES & SG SOLUTIONS -->
+<!-- ============================================================ -->
+<section id="ch11">
+  <h2>11. Issues of High RE Penetration & Smart Grid Solutions / 高渗透率RE问题与智能电网解决方案<span class="tag">EXAM</span></h2>
+
+  <div class="exam-focus">
+    The professor said: "The challenges that we face — the two main types of intermittent renewables connected to the grid: wind and solar PV. How you help them with smart grid? That is your first assignment. If you work out your assignment, you may know the main points relating to that."
+    <br><span class="bilingual">老师说：面临的挑战——两种主要间歇性RE并网。智能电网如何帮助？这是你的第一份作业。做好作业就掌握了这些要点。</span>
+  </div>
+
+  <h3>11.1 Major Issues of High RE Penetration / 高RE渗透率的主要问题 <span class="src">Challenges p.23, 43-55; Intermittency p.2, 11, 13; Assignment 1</span></h3>
+  <ol>
+    <li><strong>Intermittency & Variability / 间歇性与变化性:</strong> Wind and solar output fluctuates with natural resources (wind speed, solar irradiance), changing minute by minute. PV output can drop from 70% to 15% of peak in minutes due to passing clouds.<br><span class="bilingual">风能和太阳能输出随自然资源波动，PV可在几分钟内从峰值70%降至15%。</span></li>
+    <li><strong>Unpredictability / 不可预测性:</strong> Exact timing and magnitude of RE generation is difficult to predict, especially short-term. Load forecasting PLUS RE generation forecasting are both needed.<br><span class="bilingual">RE发电的精确时间和幅度难以预测，需要负荷预测和RE发电预测。</span></li>
+    <li><strong>Frequency Control Impact / 频率控制影响:</strong> Wind farm output can vary up to 15% of capacity within 15 minutes, causing additional supply-demand imbalance. Wind turbines have limited frequency control capability (only 3-5% of output).<br><span class="bilingual">风场输出15分钟内可变化15%，风机频率控制能力有限（仅3-5%）。</span></li>
+    <li><strong>Voltage Instability / 电压不稳定:</strong> Sudden changes in active power from RE can cause voltage swells (temporary increase) and voltage dips (temporary decrease). May result in cascading failure if inverters use primitive anti-islanding.<br><span class="bilingual">RE有功功率突变可导致电压升高和骤降，可能引发级联故障。</span></li>
+    <li><strong>More Reserves Needed / 需要更多备用:</strong> For 10% wind penetration, extra reserve of 2-8% of installed wind capacity is needed. Reserves should be fast-response (hydro, gas turbine, energy storage).<br><span class="bilingual">10%风电渗透率需额外2-8%备用容量，需快速响应备用。</span></li>
+    <li><strong>Bidirectional Power Flow / 双向潮流:</strong> Traditional distribution systems designed for one-way flow. DG creates "reverse flow" to grid — protection coordination may fail.<br><span class="bilingual">传统配电系统为单向设计，DG产生反向潮流，保护协调可能失败。</span></li>
+    <li><strong>Supply-Demand Mismatch / 供需失配:</strong> Solar peaks at midday when home usage is low; wind often strongest at midnight when demand is low.<br><span class="bilingual">太阳能中午峰值时家庭用电低；风力常在深夜最强时需求低。</span></li>
+    <li><strong>Curtailment / 弃风弃光:</strong> When RE production exceeds safe absorption, energy is curtailed. At 10% energy penetration, curtailment begins; at 20%, ~10% of wind energy is discarded.<br><span class="bilingual">10%能量渗透率时开始弃风；20%时约10%风电被弃。</span></li>
+  </ol>
+
+  <h3>11.2 Smart Grid Technologies that Help / 有助于解决的智能电网技术 <span class="src">DG Smart Grid p.34; Challenges p.57-60; Modern Grid p.43-62; Assignment 1</span></h3>
+  <table>
+    <tr><th>Technology / 技术</th><th>How it helps / 如何帮助</th></tr>
+    <tr><td><strong>Smart Meters & AMI</strong><br>智能电表和高级计量基础设施</td><td>Enable two-way communication; support TOU/dynamic pricing; real-time usage data; net-metering for RE prosumers; facilitate demand response</td></tr>
+    <tr><td><strong>Demand Response</strong><br>需求响应</td><td>Shift/reduce load to match RE output; reduce peak demand; avoid building new peaking plants; incentive-based and time-rate-based programs</td></tr>
+    <tr><td><strong>Energy Storage Systems</strong><br>储能系统</td><td>Smooth RE fluctuations; provide frequency control (faster than generators); enable peak shaving/valley filling; support intentional islanding</td></tr>
+    <tr><td><strong>Smart Inverters</strong><br>智能逆变器</td><td>LVRT capability; PSAI-based anti-islanding; reactive power injection; ramp rate control; grid support functions; interface between DG and smart grid</td></tr>
+    <tr><td><strong>PMU & WAMS</strong><br>相量测量和广域测量</td><td>Real-time system state measurement; GPS-synchronized data (30/sec); faster fault detection; dynamic analysis; situational awareness</td></tr>
+    <tr><td><strong>Advanced Forecasting</strong><br>高级预测</td><td>Predict wind/solar output hours to days ahead; integrate weather data; improve scheduling and reserve management</td></tr>
+    <tr><td><strong>Distribution Automation</strong><br>配电自动化</td><td>Self-healing; fault isolation; voltage regulation; remote switching; DMS for network management</td></tr>
+    <tr><td><strong>VPP (Virtual Power Plant)</strong><br>虚拟电厂</td><td>Aggregate small DERs for market visibility; coordinate multiple RE sources, storage and DR; participate in wholesale markets</td></tr>
+    <tr><td><strong>EV Smart Charging</strong><br>电动汽车智能充电</td><td>V2G for grid support; absorb excess wind power at night; provide frequency regulation; distributed storage</td></tr>
+    <tr><td><strong>Integrated Communication</strong><br>集成通信</td><td>Link generation-transmission-distribution-users with operations/markets/service providers; enable coordinated control</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 12: INTERMITTENCY DETAILED -->
+<!-- ============================================================ -->
+<section id="ch12">
+  <h2>12. Intermittency of RE — Detailed Analysis / 可再生能源间歇性详细分析<span class="tag">EXAM</span></h2>
+
+  <h3>12.1 Three Dimensions of Intermittency / 间歇性的三个维度 <span class="src">Intermittency p.2</span></h3>
+  <div class="key-point">
+    <strong>1. Variability (变化性):</strong> Power output depends on natural resource availability (wind, solar). Categorized by time range.<br>
+    <strong>2. Unpredictability (不可预测性):</strong> Exact timing and magnitude difficult to predict, especially short-term.<br>
+    <strong>3. Geographic diversity (地理多样性):</strong> RE resource distribution varies across regions.<br>
+    Only 1 and 2 affect grid operation when RE is connected. / 只有1和2影响RE并网后的电网运行。
+  </div>
+
+  <h3>12.2 Three Timescales of Variability / 变化性的三个时间尺度 <span class="src">Intermittency p.5-11</span></h3>
+  <table>
+    <tr><th>Timescale / 时间尺度</th><th>Impact / 影响</th><th>Solutions / 解决方案</th></tr>
+    <tr>
+      <td><strong>Short-term (seconds~minutes)</strong><br>短期（秒~分钟）</td>
+      <td><strong>Grid Stability & Reliability</strong><br>电网稳定性和可靠性<br>Biggest challenge! PV can drop from 70% to 15% of peak within minutes due to clouds.</td>
+      <td>Grid-smart inverters; LVRT; ramp rate control; fast-response energy storage (flywheel, battery); regulating reserves<br><span class="bilingual">智能逆变器；LVRT；斜率控制；快速响应储能（飞轮、电池）；调节备用</span></td>
+    </tr>
+    <tr>
+      <td><strong>Medium-term (hours~days)</strong><br>中期（小时~天）</td>
+      <td><strong>Load Balancing</strong><br>负荷平衡<br>Affects supplemental reserves. Effect mainly on cost, not grid stability.</td>
+      <td>Integrate forecasting into daily operation; improved operating procedures; flexible capacity; demand response<br><span class="bilingual">将预测纳入日常运行；改进操作流程；灵活容量；需求响应</span></td>
+    </tr>
+    <tr>
+      <td><strong>Long-term (months~years)</strong><br>长期（月~年）</td>
+      <td><strong>Power System Planning & Design</strong><br>电力系统规划与设计<br>Max vs min annual solar energy can differ by ~40%. Does NOT affect grid stability.</td>
+      <td>Diverse resource portfolio; long-term planning; energy mix optimization<br><span class="bilingual">多元化资源组合；长期规划；能源结构优化</span></td>
+    </tr>
+  </table>
+
+  <h3>12.3 Intermittency by RE Type / 各类RE的间歇性 <span class="src">Intermittency p.14</span></h3>
+  <table>
+    <tr><th>RE Type / 类型</th><th>Long-term</th><th>Seasonal</th><th>Short-term</th></tr>
+    <tr><td><strong>Solar PV / 光伏</strong></td><td>Yes (40% annual variation)</td><td>Yes (summer vs winter)</td><td><strong>YES - biggest issue! (clouds)</strong></td></tr>
+    <tr><td><strong>Wind / 风能</strong></td><td>Yes</td><td>Yes</td><td><strong>YES (gusts, weather changes)</strong></td></tr>
+    <tr><td><strong>Geothermal / 地热</strong></td><td><strong>NO</strong></td><td><strong>NO</strong></td><td><strong>NO — only RE without any intermittency!</strong></td></tr>
+    <tr><td><strong>Hydropower / 水力</strong></td><td>Yes</td><td>Yes (dry/rainy season)</td><td>NO (storage type)</td></tr>
+    <tr><td><strong>Tidal / 潮汐</strong></td><td>NO</td><td>NO</td><td>Daily variation but well predicted</td></tr>
+    <tr><td><strong>Biomass / 生物质</strong></td><td>Yes</td><td>Yes</td><td>NO (once processed)</td></tr>
+    <tr><td><strong>Fuel cells & CHP</strong></td><td colspan="3">Controllable — regulate by controlling fuel supply / 可控——通过燃料供应调节</td></tr>
+  </table>
+
+  <h3>12.4 Coping with Intermittency — Solutions / 应对间歇性的方案 <span class="src">Intermittency p.23-48</span></h3>
+  <h4>Option 1: CSP with Thermal Storage / 聚光太阳能+热储能 <span class="src">Intermittency p.23-35</span></h4>
+  <ul>
+    <li>Solar Tower, Parabolic Trough, CLFR can store thermal energy in molten salt → regulated electricity output</li>
+    <li>Parabolic Dish has NO storage → similar intermittency as PV</li>
+    <li>Hybrid systems: Large fossil fuel plant + CSP support, or Large CSP + fossil fuel backup</li>
+    <li>Example: Kogan Creek (750MW coal + 44MW CLFR) — sunlight variability adjusted by coal supply</li>
+    <li class="bilingual">太阳塔、槽式、CLFR可储热→调节输出。碟式无储能→类似PV间歇性。</li>
+  </ul>
+
+  <h4>Option 2: Smart Grid with Smart Inverters / 智能电网与智能逆变器 <span class="src">Intermittency p.36-48</span></h4>
+  <div class="key-point">
+    <strong>Grid-smart Inverter with SCADA System:</strong> Has power electronic controls, communication interface and control structure to interface with utility EMS. Controlled by utility through SCADA. Features:<br>
+    1. <strong>Ride-through capability (LVRT)</strong> — doesn't disconnect during voltage disturbances<br>
+    2. <strong>PSAI-based anti-islanding</strong> — remote utility control of on/off<br>
+    3. <strong>Reactive power injection/absorption</strong> — voltage regulation<br>
+    4. <strong>Soft start after outages</strong> — staged reconnection avoids active power spikes<br>
+    5. <strong>Ramp rate control</strong> — ramp up (with battery) and ramp down (pitch control for wind)<br>
+    6. <strong>Real-time communication and monitoring</strong> — built-in sensors and protocols<br>
+    <span class="bilingual">智能逆变器通过SCADA与电网管理系统对接，具有LVRT、PSAI反孤岛、无功功率注入、软启动、斜率控制等功能。</span>
+  </div>
+
+  <h4>Site Controller (Proposed by Sandia National Lab) <span class="src">Intermittency p.42-46</span></h4>
+  <p>Single node to monitor and control multiple inverters via utility SCADA. Manages: ramp rate, real/reactive power output, V/I/f, PSAI-based anti-islanding.</p>
+  <p>Architecture: Control Centre (Utility) ↔ Communication Network ↔ SCADA ↔ Site Controller ↔ Shared Inverter</p>
+
+  <h4>Aggregation Effect / 聚合效应 <span class="src">Intermittency p.49</span></h4>
+  <div class="formula">
+    Variability of N uncorrelated plants = (1 / √N) × single plant variability<br>
+    <small>Spatial diversity reduces aggregated variability as the number of plants increases</small>
+  </div>
+
+  <h3>12.5 IEEE 1547 — Evolving Standards / IEEE 1547标准演进 <span class="src">Intermittency p.50-57</span></h3>
+  <ul>
+    <li><strong>Previous versions:</strong> DG must disconnect from islanded system within 2 seconds (conservative policy)</li>
+    <li><strong>New IEEE 1547:</strong> Permits <strong>intentional islanding</strong>; requires <strong>LVRT capability</strong></li>
+    <li>During LVRT, DG shall: maintain synchronism with Area EPS; continue to exchange current; neither cease to energize nor trip</li>
+    <li><strong>Synchrophasors (PMU)</strong> can accurately detect islanding through precise, GPS-synchronized, wide-area measurements (30 readings/sec)</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 13: ANTI-ISLANDING DETAILED -->
+<!-- ============================================================ -->
+<section id="ch13">
+  <h2>13. Anti-islanding Detection Methods — Complete Guide / 反孤岛检测方法详解<span class="tag">EXAM</span></h2>
+
+  <h3>13.1 Why Anti-islanding is Challenging / 为什么反孤岛很有挑战性 <span class="src">Grid connection p.41-43</span></h3>
+  <p>In some cases, the local load characteristics result in only very small changes in active and reactive power when the grid loses power. The inverter cannot easily detect the difference between normal grid fluctuations and complete grid failure → <strong>Non-Detection Zone (NDZ)</strong>.</p>
+  <div class="formula">
+    NDZ (Non-Detection Zone / 检测盲区): The region in ΔP-ΔQ space where islanding detection is NOT possible.
+  </div>
+
+  <h3>13.2 Detection Methods Comparison / 检测方法对比 <span class="src">Grid connection p.53</span></h3>
+  <table>
+    <tr><th>Attribute / 属性</th><th>Remote / 远程</th><th>Passive / 被动</th><th>Active - Frequency / 主动频率</th><th>Active - Phase / 主动相位</th><th>Active - Magnitude / 主动幅值</th></tr>
+    <tr><td><strong>Principle / 原理</strong></td><td>Communication between PV system and utility<br>PV系统与电力公司之间通信</td><td>Only monitoring system parameters<br>仅监测系统参数</td><td colspan="3">Injecting active signal into inverter output current ("dyeing" PV power)</td></tr>
+    <tr><td><strong>NDZ</strong></td><td><strong>None / 无</strong></td><td><strong>Large / 大</strong></td><td>Small / 小</td><td>Small / 小</td><td>Small / 小</td></tr>
+    <tr><td><strong>Cost / 成本</strong></td><td>High / 高</td><td>Low / 低</td><td>Low / 低</td><td>Low / 低</td><td>Low / 低</td></tr>
+    <tr><td><strong>Power Quality / 电能质量</strong></td><td>No degradation</td><td>No degradation</td><td>Harmonic degradation</td><td>Power factor degradation</td><td>Power factor degradation</td></tr>
+    <tr><td><strong>Smart Grid Integration / 智能电网集成</strong></td><td><strong>Best potential!</strong></td><td>NOT possible</td><td colspan="3">Limited</td></tr>
+  </table>
+
+  <h3>13.3 Passive Methods / 被动方法 <span class="src">Grid connection p.46-47</span></h3>
+  <p>Monitor specific parameters without injecting any signal:</p>
+  <ul>
+    <li><strong>Voltage relay</strong> (OVR/UVR): Detect over/under voltage</li>
+    <li><strong>Frequency relay</strong> (OFR/UFR): Detect over/under frequency</li>
+    <li><strong>Harmonic distortion</strong>: Detect total harmonic or 3rd harmonic change</li>
+    <li><strong>Phase jump</strong>: Monitor difference between PV output voltage and current phases</li>
+  </ul>
+
+  <h3>13.4 Active Methods / 主动方法 <span class="src">Grid connection p.48-52</span></h3>
+  <table>
+    <tr><th>Method / 方法</th><th>Principle / 原理</th></tr>
+    <tr><td><strong>Active Frequency Drift (AFD)</strong><br>主动频率漂移</td><td>Make PV output current slightly distorted to detect islanding. Easily implemented in microprocessor-based inverter. / 使PV输出电流略微失真以检测孤岛。</td></tr>
+    <tr><td><strong>Slip-mode Frequency Shift (SMS)</strong><br>滑模频率移位</td><td>Use positive feedback on phase to destabilize frequency of PV inverter voltage when islanding occurs. Detected by OFR/UFR. / 利用相位正反馈使孤岛时PV逆变器频率不稳定。</td></tr>
+    <tr><td><strong>Sinusoidal Phase Variation (SPV)</strong><br>正弦相位变化</td><td>Inject continuous sinusoidal signal to modified inverter current phase reference. Detects based on reactive voltage variation (not frequency relay). / 向逆变器电流相位参考注入正弦信号。</td></tr>
+    <tr><td><strong>Current Magnitude Variation</strong><br>电流幅值变化</td><td>Change current magnitude as function of voltage magnitude for designed period. During islanding, voltage goes out of relay range (OVR/UVR). Total average output power maintained. / 根据电压变化改变电流幅值。</td></tr>
+  </table>
+
+  <h3>13.5 Remote Method — Best for Smart Grid / 远程方法——最适合智能电网 <span class="src">Grid connection p.45</span></h3>
+  <ul>
+    <li>Communication between utility and DG inverters using PLCC or SCADA</li>
+    <li><strong>Guarantees</strong> islanding detection (NDZ = 0)</li>
+    <li>No power quality degradation</li>
+    <li>Best potential to integrate with smart grid controls</li>
+    <li>Higher cost due to additional communication hardware</li>
+    <li>Leads to → <strong>PSAI-based anti-islanding</strong></li>
+  </ul>
+
+  <h3>13.6 PSAI — Detailed Mechanism / PSAI详细机制 <span class="src">Intermittency p.38, 53; Paper-IETPS2017 p.6</span></h3>
+  <div class="key-point" style="background:#fff5f5; border-left-color:var(--accent);">
+    <strong>PSAI = Permissive Signal Anti-Islanding (许可信号反孤岛)</strong><br>
+    Developed under <strong>Sandia National Laboratories</strong> (US Govt), part of the SEGIS (Solar Energy Grid Integration Systems) project.<br><br>
+    <strong>How it works:</strong><br>
+    1. Utility sends a continuous <strong>permissive signal</strong> via SCADA to the inverter<br>
+    2. When signal is <strong>PRESENT</strong> → inverter knows grid is OK → operates normally<br>
+    3. When signal is <strong>ABSENT</strong> (grid outage) → inverter has two options:<br>
+    &nbsp;&nbsp;&nbsp;a) In <strong>traditional mode</strong>: activates anti-islanding → disconnects<br>
+    &nbsp;&nbsp;&nbsp;b) In <strong>smart grid mode</strong>: stays connected → <strong>intentional island permitted!</strong><br>
+    4. The smart grid controller decides which mode based on conditions<br><br>
+    <strong>Advantages of PSAI:</strong><br>
+    - Facilitates grid support functions without losing islanding detection effectiveness<br>
+    - Wider voltage/frequency tripping settings → better accommodate utility transients<br>
+    - Better LVRT performance<br>
+    - Remote utility control of inverter on/off<br>
+    <span class="bilingual">PSAI由桑迪亚国家实验室开发。电网通过SCADA发送许可信号。信号存在→正常运行；信号消失→传统模式断开或智能电网模式允许有意孤岛。</span>
+  </div>
+
+  <h3>13.7 Intentional Islanding — Detailed Process / 有意孤岛详细过程 <span class="src">Intermittency p.54-61</span></h3>
+  <h4>Two Phases of Islanded Operation / 孤岛运行的两个阶段</h4>
+  <ol>
+    <li><strong>Transition from grid-connected to islanded / 从并网到孤岛的过渡</strong>
+      <ul>
+        <li>Voltage disturbances must be quickly dampened</li>
+        <li>Protection schemes inside APS and in grid must not be affected</li>
+        <li>APS must have sufficient local generation and energy storage</li>
+        <li>Control system must regulate voltage and frequency within acceptable ranges</li>
+      </ul>
+    </li>
+    <li><strong>Operation isolated from grid / 与电网隔离运行</strong>
+      <ul>
+        <li>APS operates as autonomous microgrid</li>
+        <li>IDAPS manages local supply-demand balance</li>
+        <li>Eventually reconnect when grid is restored</li>
+      </ul>
+    </li>
+  </ol>
+  <h4>Reconnection (Synchronization) Methods / 重新连接（同步）方法</h4>
+  <table>
+    <tr><th>Method / 方法</th><th>Description / 描述</th></tr>
+    <tr><td><strong>Active Synchronization / 主动同步</strong></td><td>APS controller matches voltage signal (amplitude, frequency, phase angle) at PCC before closing breaker. Requires measurement on both sides + communication channel. / APS控制器在PCC两侧匹配电压信号。</td></tr>
+    <tr><td><strong>Passive Synchronization / 被动同步</strong></td><td>Device monitors voltage at both sides of PCC; allows connection only when within specified range. May be slower. / 设备监测PCC两侧电压，仅在范围内允许连接。</td></tr>
+    <tr><td><strong>Power Electronic Interface / 电力电子接口</strong></td><td>Most flexible! Controller realizes voltage waveform matching grid-side parameters. Costlier but allows completely different architectures on both sides. Simplest for smart grid control. / 最灵活，控制器实现与电网侧参数匹配。</td></tr>
+  </table>
+
+  <h3>13.8 THD Formula / 总谐波失真公式 <span class="src">Grid connection p.64</span></h3>
+  <div class="formula">
+    THD(%) = √(Σ I<sub>h</sub>² from h=2 to ∞) / I<sub>1</sub> × 100%<br>
+    <small>IEC recommends: Voltage THD < 5%, Current THD < 2% for grid-connected inverters</small>
+  </div>
+
+  <h3>13.9 Testing Requirements / 测试要求 <span class="src">Grid connection p.55-59; Local experience paper</span></h3>
+  <ul>
+    <li>Anti-islanding trip time: typically within <strong>0.16 sec (8 cycles)</strong> or 0.2s~2s depending on system</li>
+    <li>Need high-precision waveform capture to prove trip time</li>
+    <li>Inverter efficiency test per <strong>IEC 61683</strong>: measure at 10%, 25%, 50%, 70%, 100%, 120% of rating</li>
+    <li>Power factor: should be close to 1</li>
+    <li>Most inverters deliver >90% conversion efficiency over most output range</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 14: IDAPS DETAILED -->
+<!-- ============================================================ -->
+<section id="ch14">
+  <h2>14. IDAPS — Self-Healing Smart Grid Detailed / IDAPS自愈智能电网详解<span class="tag">EXAM</span></h2>
+
+  <div class="exam-focus">
+    IDAPS questions have appeared in 2017 B3, 2019 B3, 2021 B3, 2022 B4. Always asks: (a) outline the structure and operational principles; (b) how to resolve conflicts between Local and Global decision-making.
+    <br><span class="bilingual">IDAPS题目出现在2017 B3、2019 B3、2021 B3、2022 B4。总是问：(a)概述结构和运行原理；(b)如何解决本地与全局决策冲突。</span>
+  </div>
+
+  <h3>14.1 Why IDAPS? / 为什么需要IDAPS？ <span class="src">DG Smart Grid p.51</span></h3>
+  <ul>
+    <li>Anticipating all possible outage scenarios is difficult due to smart grid scale and complexity</li>
+    <li>Large amounts of real-time data — limitations on how quickly humans can make efficient decisions</li>
+    <li>Need automated control → Multi-Agent System (MAS) approach</li>
+    <li class="bilingual">由于智能电网规模大、复杂性高，难以预测所有停电场景；数据量大，人类决策速度有限→需要多代理自动控制。</li>
+  </ul>
+
+  <h3>14.2 Core Concepts / 核心概念 <span class="src">DG Smart Grid p.52, 56</span></h3>
+  <div class="key-point">
+    <strong>IDAPS = Intelligent Distributed Autonomous Power Systems</strong><br>
+    - Network of interconnected sub-networks that are <strong>cellular in structure</strong><br>
+    - Can operate <strong>autonomously</strong> in event of system fault<br>
+    - Essential step: sub-dividing the smart grid into <strong>modular microgrids</strong><br>
+    - Each module = <strong>APS (Autonomous Power System)</strong><br>
+    <span class="bilingual">IDAPS是细胞结构的互联子网络，可在故障时自主运行。关键步骤：将智能电网划分为模块化微电网（APS）。</span>
+  </div>
+
+  <h3>14.3 APS — Autonomous Power System / 自治电力系统 <span class="src">DG Smart Grid p.54-55</span></h3>
+  <p>A localized group of electricity sources and loads that can operate in parallel with the broader utility grid. Features:</p>
+  <ul>
+    <li>Locally utilizing CHP + renewable DG</li>
+    <li>Reduces power losses during transmission</li>
+    <li>Creates local economic activities and jobs</li>
+    <li>Resilient to terrorist/cyber attacks, supply shortages, meteorological disasters</li>
+    <li>May help postpone costly grid investments at distribution level</li>
+    <li>Can offer balancing services and blackstart capacity to the grid</li>
+  </ul>
+
+  <h3>14.4 Multi-Agent System (MAS) Architecture / 多代理系统架构 <span class="src">DG Smart Grid p.56-59</span></h3>
+  <table>
+    <tr><th>Layer / 层</th><th>Agents / 代理</th><th>Function / 功能</th></tr>
+    <tr>
+      <td><strong>Top Layer</strong><br>管理层</td>
+      <td><strong>Management Agents / 管理代理</strong></td>
+      <td>Make high-level decisions; receive extensive near-real-time data; can elevate autonomy of lower agents; full autonomy<br>高层决策；接收准实时数据；可提升下级代理自主级别；完全自主</td>
+    </tr>
+    <tr>
+      <td rowspan="4"><strong>Middle Layer</strong><br>中间层</td>
+      <td><strong>User Agents / 用户代理</strong></td>
+      <td>Act on behalf of consumers; ensure homes/businesses have needed power<br>代表消费者行事；确保家庭/企业有足够电力</td>
+    </tr>
+    <tr>
+      <td><strong>DER Agents / DER代理</strong></td>
+      <td>Act on behalf of DERs (PV, CHP, wind); independent generation sources that participate in power market<br>代表DER（PV、CHP、风机）行事；参与电力市场的独立发电源</td>
+    </tr>
+    <tr>
+      <td><strong>Device Agents / 设备代理</strong></td>
+      <td>Act on behalf of grid components (switches, transformers); report sensor/meter readings to control agents<br>代表电网组件（开关、变压器）行事；向控制代理报告传感器/表计读数</td>
+    </tr>
+    <tr>
+      <td><strong>Control Agents / 控制代理</strong></td>
+      <td>Monitor grid sections; collect data from all agents in area; semi-autonomous (wait state, act upon directive)<br>监测电网区段；收集区域内所有代理数据；半自主（等待状态，在指令下行动）</td>
+    </tr>
+  </table>
+  <p>Agent autonomy: Top layer = fully autonomous. Middle layer = semi-autonomous (act under direction from supervisor). Management agents can strategically elevate semi-autonomous agents' autonomy level based on system state.<br><span class="bilingual">代理自主性：顶层=完全自主。中间层=半自主（在上级指令下行动）。管理代理可根据系统状态策略性地提升半自主代理的自主级别。</span></p>
+
+  <h3>14.5 Local vs Global Decision Making — Conflict Resolution / 本地vs全局决策冲突解决 <span class="src">DG Smart Grid p.61-62</span></h3>
+  <div class="key-point">
+    <strong>The Problem / 问题:</strong><br>
+    - For <strong>local decisions</strong>: restricted data is acceptable for limited-scope decisions<br>
+    - For <strong>global decisions</strong>: data restriction can result in ineffective and potentially harmful decisions<br>
+    - Centralizing everything is problematic due to excessive communication requirements<br><br>
+    <strong>The Solution / 解决方案:</strong><br>
+    1. <strong>Modularity / 模块化:</strong> Separate the large grid into small independent microgrids → facilitates effective local decision making. Each autonomous unit manages and solves local problems independently.<br>
+    2. <strong>Hierarchical agents / 分层代理:</strong> Management agents in every microgrid handle local decisions; conflicts with global priorities resolved through hierarchical coordination.<br>
+    3. <strong>Adjustable autonomy / 可调自主性:</strong> Management agents can strategically change autonomy levels of semi-autonomous agents based on current decision model and system state.<br>
+    4. <strong>Intentional islanding / 有意孤岛:</strong> During power outage, microgrid can island itself from neighbours to avoid propagation of disruption. Only possible with distributed energy storage backup.<br>
+    <span class="bilingual">解决方案：模块化将大电网分割为独立微电网→有效本地决策。分层代理架构协调本地与全局。可调自主性让管理代理根据系统状态调整代理自主级别。</span>
+  </div>
+
+  <h3>14.6 Online Balancing Mechanism / 在线平衡机制 <span class="src">DG Smart Grid p.64</span></h3>
+  <ul>
+    <li>Balances unpredictable demand/supply on real-time basis using User Agents, DER Agents, Device Agents</li>
+    <li>Demand increases → buy at market price; Demand decreases → sell at market price</li>
+    <li>Supply decreases → buy at market price; DG supply increases → sell at market price</li>
+    <li><strong>Shadow predictor:</strong> sends advance warnings when there will be sudden changes in local DG supply</li>
+  </ul>
+
+  <h3>14.7 Smart Grid Advantages enabled by IDAPS / IDAPS使能的智能电网优势 <span class="src">DG Smart Grid p.63</span></h3>
+  <ol>
+    <li><strong>Power rerouting / 电力重路由:</strong> When devices or lines fail, reroute power along alternative pathways using network topology models</li>
+    <li><strong>Resource allocation / 资源分配:</strong> Rapidly access new or reserve power supply sources, prioritize combinations by advantages/disadvantages</li>
+    <li><strong>Dynamic pricing / 动态定价:</strong> Shift power sources or limit consumption at prescribed times; negotiate new power supply schedules at reduced cost</li>
+  </ol>
+
+  <div class="past-exam">
+    <strong>Model Answer Framework for IDAPS Questions:</strong><br>
+    (a) <strong>Structure:</strong> Smart grid subdivided into modular microgrids (APS). Each APS has MAS with 5 agent types (management, user, DER, device, control) in hierarchical layers. Management agents make high-level decisions; middle-layer agents semi-autonomous.<br>
+    (b) <strong>Conflict resolution:</strong> Modularity enables local autonomy; hierarchical coordination resolves global conflicts; adjustable autonomy allows dynamic control; intentional islanding prevents fault propagation; shadow predictor provides advance warnings.
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 15: PV SYSTEMS & LOAD MANAGEMENT DETAILED -->
+<!-- ============================================================ -->
+<section id="ch15">
+  <h2>15. PV Systems & Load Management — Detailed / PV系统与负荷管理详解<span class="tag">EXAM</span></h2>
+
+  <h3>15.1 PV Electrical Characteristics / PV电气特性 <span class="src">PV load management p.3-4</span></h3>
+  <ul>
+    <li>PV utilizes the <strong>photo-electric effect</strong> of semiconductors</li>
+    <li>Current output is <strong>directly proportional</strong> to photon quantity (solar irradiance W/m²) / 电流输出与光子数量（太阳辐照度W/m²）成正比</li>
+    <li>Power = I × V; non-linear I-V characteristics / 功率=I×V；非线性I-V特性</li>
+    <li>Response is <strong>almost instantaneous</strong> → intermittency follows solar irradiance directly / 响应几乎是瞬时的→间歇性直接跟随太阳辐照度</li>
+    <li>Output power varies non-linearly with: solar irradiance (dominant), cell temperature, relative air mass / 输出功率与太阳辐照度（主导）、电池温度、相对大气质量非线性变化</li>
+  </ul>
+
+  <h3>15.2 MPPT — Maximum Power Point Tracking / 最大功率点跟踪 <span class="src">PV load management p.5</span></h3>
+  <div class="key-point">
+    The MPP (I<sub>m</sub>, V<sub>m</sub>) constantly shifts with environmental conditions. Continuous adjustment captures maximum output. After MPPT, power is fixed according to solar resources.<br>
+    - <strong>Stand-alone system:</strong> MPPT regulates charging voltage and current<br>
+    - <strong>Grid-connected system:</strong> MPPT output to inverter for conversion to AC<br>
+    <span class="bilingual">MPP随环境条件持续移动，需要连续调整以捕获最大输出。</span>
+  </div>
+
+  <h3>15.3 Three Modes of Battery Charging from PV / PV电池充电三种模式 <span class="src">DG Smart Grid p.47-49</span></h3>
+  <table>
+    <tr><th>Mode / 模式</th><th>Condition / 条件</th><th>Operation / 运行</th></tr>
+    <tr><td><strong>I. Constant Current / 恒流</strong></td><td>Battery voltage < cut-off voltage<br>电池电压<截止电压</td><td>Charge with constant current (minimum of inductor peak and PV peak current)<br>以恒定电流充电（电感峰值和PV峰值电流的最小值）</td></tr>
+    <tr><td><strong>II. MPPT Mode / MPPT模式</strong></td><td>Between cut-off and float voltage<br>在截止电压和浮充电压之间</td><td>MPPT controller tracks peak power point. Current = PV power / battery voltage. Periodic recalibration + triggered by sudden PV voltage changes.<br>MPPT控制器跟踪最大功率点。电流=PV功率/电池电压。周期性重新校准+PV电压突变触发。</td></tr>
+    <tr><td><strong>III. Trickle Charge / 涓流充电</strong></td><td>SoC = full (voltage = float voltage)<br>充电状态=满（电压=浮充电压）</td><td>Trickle charge with minimal duty cycle applied to synchronous buck converter<br>以最小占空比对同步降压变换器进行涓流充电</td></tr>
+  </table>
+
+  <h3>15.4 Load Management Modes / 负荷管理模式 <span class="src">Paper-Lam Lo Lai; Demand Response p.25-26</span></h3>
+  <table>
+    <tr><th>Mode / 模式</th><th>Description / 描述</th><th>Application / 应用</th></tr>
+    <tr><td><strong>Energy Demand Shedding / 能源需求削减</strong></td><td>Reduce overall demand (replace inefficient appliances)<br>减少总需求（更换低效电器）</td><td>BMS can achieve 20-30% savings on HVAC in commercial buildings<br>BMS可在商业建筑HVAC上节省20-30%</td></tr>
+    <tr><td><strong>Peak Load Clipping / 峰值负荷削减</strong></td><td>Reduce consumption during peak hours by switching off non-crucial equipment<br>在高峰时段关闭非关键设备减少消耗</td><td>DLC programs; DR triggered by price/reliability signals<br>DLC计划；由价格/可靠性信号触发的DR</td></tr>
+    <tr><td><strong>Load Shifting / 负荷转移</strong></td><td>Reschedule controllable equipment away from peak periods. Most sophisticated mode.<br>将可控设备重新安排到非高峰时段。最复杂的模式。</td><td>Storage heating/cooling; smart EV charging; TOU pricing; requires prediction and AI<br>蓄热/蓄冷；智能EV充电；TOU定价；需要预测和AI决策</td></tr>
+  </table>
+
+  <h3>15.5 BIPV Integration with BMS / BIPV与楼宇管理系统集成 <span class="src">Paper-Lam Lo Lai fullpaper</span></h3>
+  <ul>
+    <li>BIPV generation profiles naturally match many building load profiles → inherent peak-clipping device<br><span class="bilingual">BIPV发电曲线天然匹配许多建筑负荷曲线→固有削峰设备</span></li>
+    <li>Dynamic BIPV model aids BMS in load-shifting strategies / 动态BIPV模型辅助BMS负荷转移策略</li>
+    <li>AI methods: Fuzzy Logic Control (FLC) + Artificial Neural Network (ANN) for HVAC optimization<br><span class="bilingual">AI方法：模糊逻辑控制(FLC)+人工神经网络(ANN)用于暖通优化</span></li>
+    <li>Important: using hourly solar data instead of 1-minute data can produce errors of up to 35% in PV energy yield estimation → short-interval data is essential<br><span class="bilingual">重要：使用小时级太阳能数据而非1分钟数据可导致PV能量估算误差高达35%→短间隔数据是必要的</span></li>
+  </ul>
+
+  <h3>15.6 PV Grid Connection Schematic (for exam drawing) / PV并网示意图 <span class="src">Grid connection p.25; PV load management p.6-7</span></h3>
+  <div class="key-point">
+    <strong>Drawing Template for Exam / 考试画图模板:</strong><br>
+    <code>PV Array → DC/DC Converter (MPPT) → DC Bus → DC/AC Inverter → Isolation Transformer → Circuit Breaker → AC Grid (380V 50Hz 3-phase)</code><br><br>
+    Must include: DSP Controller, Sensors (V, I, P, Q), Anti-islanding protection, Lockable isolation switch, Warning labels, Loads connected to AC bus.<br><br>
+    <strong>For Smart Grid version, add:</strong> Communication interface (SCADA), Smart meter, PSAI receiver, LVRT capability, Site controller connection.<br>
+    <span class="bilingual">PV阵列→DC/DC变换器(MPPT)→直流母线→DC/AC逆变器→隔离变压器→断路器→交流电网(380V 50Hz三相)。必须包括：DSP控制器、传感器、反孤岛保护、可锁隔离开关。智能电网版本另加：SCADA通信接口、智能电表、PSAI接收器、LVRT。</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 16: SMART METER, HAN, SMART APPLIANCES -->
+<!-- ============================================================ -->
+<section id="ch16">
+  <h2>16. Smart Meters, HAN & Smart Appliances / 智能电表、家庭网络与智能家电<span class="tag">EXAM</span></h2>
+
+  <h3>16.1 Smart Meter — 9 Key Capabilities / 智能电表9大能力 <span class="src">Demand Response p.54, 56</span></h3>
+  <ol>
+    <li><strong>Automatic Meter Reading (AMR) / 自动抄表</strong></li>
+    <li><strong>Bi-directional communication / 双向通信</strong> — dynamic interaction with utility</li>
+    <li><strong>TOU tariff support / 分时电价支持</strong> — detailed recordings with accurate time-stamps</li>
+    <li><strong>In-home display / 家庭显示单元</strong> — customers monitor own usage</li>
+    <li><strong>Net-metering / 净计量</strong> — integrating distributed resources (solar panels)</li>
+    <li><strong>Pre-payment / 预付费</strong> — revenue protection</li>
+    <li><strong>Remote connect/reconnect / 远程连接/重连</strong> — better service</li>
+    <li><strong>Smart appliance controls / 智能家电控制</strong></li>
+    <li><strong>Power quality and outage monitoring / 电能质量和停电监测</strong></li>
+  </ol>
+
+  <h3>16.2 AMI Data Collection Network Options / AMI数据采集网络选项 <span class="src">Demand Response p.59-60</span></h3>
+  <table>
+    <tr><th>Option / 选项</th><th>Description / 描述</th></tr>
+    <tr><td><strong>BPL</strong> (Broadband over Power Line)</td><td>Modulates high-frequency radio waves with digital signals from Internet over power lines / 通过电力线传输宽带信号</td></tr>
+    <tr><td><strong>PLC</strong> (Power Line Communications)</td><td>Sends data through power lines by injecting information into current, voltage or new signal / 通过电力线注入信息</td></tr>
+    <tr><td><strong>Fixed RF Systems</strong></td><td>Meters communicate over private network using RF signals / 通过私有RF网络通信</td></tr>
+    <tr><td><strong>Public Networks</strong></td><td>Uses existing paging, satellite, Internet, telephony (cellular/landline) / 使用现有公共网络</td></tr>
+  </table>
+
+  <h3>16.3 HAN — Home Area Network / 家庭局域网 <span class="src">Demand Response p.64-66</span></h3>
+  <ul>
+    <li>Backbone of communication between smart meter and home appliances</li>
+    <li>Network portal/gateway connects outside information services to HAN</li>
+    <li><strong>ZigBee</strong> (IEEE 802.15.4) selected as HAN standard by NIST and DOE because:
+      <ul>
+        <li>Highly reliable</li>
+        <li>Cost effective</li>
+        <li><strong>Low-power: 5 years on a pair of AA batteries!</strong></li>
+        <li>Interoperability standard</li>
+        <li>Mesh networking and rerouting</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>16.4 Smart Appliances / 智能家电 <span class="src">Demand Response p.73-75</span></h3>
+  <p><strong>Two categories / 两个类别:</strong></p>
+  <ol>
+    <li><strong>Home automation linked:</strong> Can be linked into home network systems; manipulated remotely through mobile/PC</li>
+    <li><strong>Price-signal responsive:</strong> Accept price signals from utility during peak hours; recognize grid stability; limit energy consumption during those situations</li>
+  </ol>
+  <div class="comparison-grid">
+    <div class="comparison-card pros">
+      <h4>Advantages / 优点</h4>
+      <ul>
+        <li>Manage demand without generation/delivery upgrades / 无需升级发电/输配即可管理需求</li>
+        <li>Lower energy bills, increase convenience / 降低能源费用，增加便利性</li>
+        <li>Increase productivity and reliability when matched with DR / 与DR结合时提高生产力和可靠性</li>
+        <li>Fault detection diagnostics / 故障检测诊断</li>
+      </ul>
+    </div>
+    <div class="comparison-card cons">
+      <h4>Disadvantages / 缺点</h4>
+      <ul>
+        <li>Potentially high upfront cost (premium products) / 前期成本可能较高（高端产品）</li>
+        <li>May require periodic review for effectiveness / 可能需要定期审查效果</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>16.5 Dynamic Pricing Comparison / 动态电价对比 <span class="src">Demand Response p.81-84</span></h3>
+  <table>
+    <tr><th>Model / 模式</th><th>Rate Structure / 费率结构</th><th>Peak Reduction / 峰值削减</th></tr>
+    <tr><td><strong>Flat Rate / 固定费率</strong></td><td>$0.14 all hours</td><td>0% (baseline)</td></tr>
+    <tr><td><strong>TOU / 分时电价</strong></td><td>Off-peak $0.135; Peak $0.22</td><td><strong>~5%</strong> peak power demand</td></tr>
+    <tr><td><strong>CPP / 关键峰值定价</strong></td><td>Off-peak $0.09; Critical peak $1.10</td><td><strong>10-20%</strong> peak power demand</td></tr>
+    <tr><td><strong>RTP / 实时定价</strong></td><td>Varies hourly reflecting wholesale prices</td><td>Highest potential</td></tr>
+  </table>
+  <div class="key-point">
+    <strong>Key fact:</strong> If just <strong>5% of customers</strong> shift their use, it reduces electricity prices substantially for <strong>everyone</strong>. A PJM study showed: 3% demand shift during 100 highest-use hours saved shifting customers $17.5M and non-shifting customers $120M (over 5× more!).<br>
+    <span class="bilingual">关键事实：仅5%的用户转移用电就能大幅降低所有人的电价。PJM研究显示：在100个最高用电小时内转移3%需求，转移用户节省1750万美元，非转移用户节省1.2亿美元。</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 17: NEW MEXICO CASE STUDY -->
+<!-- ============================================================ -->
+<section id="ch17">
+  <h2>17. Case Study: New Mexico Smart Grid Demo / 新墨西哥智能电网示范项目<span class="tag">EXAM</span></h2>
+
+  <h3>17.1 Overview / 概述 <span class="src">DG Smart Grid p.3-9</span></h3>
+  <ul>
+    <li>Japan-US collaborative project (NEDO + New Mexico government + Los Alamos & Sandia National Labs)</li>
+    <li>Started operating in 2012</li>
+    <li><strong>2 MW PV + 1.8 MW/8.3 MWh battery storage</strong></li>
+    <li>PV supplying ~75% of total electricity loads — world's most advanced smart grid demo for supply-demand control</li>
+  </ul>
+
+  <h3>17.2 Energy Storage Configuration / 储能配置 <span class="src">DG Smart Grid p.10</span></h3>
+  <table>
+    <tr><th>Battery Type</th><th>Capacity</th><th>Function</th></tr>
+    <tr><td>Lead-acid / 铅酸</td><td>0.8 MW / 2.3 MWh</td><td rowspan="2">Buffer PV output; smooth generation; maintain voltage; control peak power consumption</td></tr>
+    <tr><td>NaS (Sodium-sulphur) / 钠硫</td><td>1.0 MW / 6.0 MWh</td></tr>
+  </table>
+
+  <h3>17.3 uEMS Functions / 微能源管理系统功能 <span class="src">DG Smart Grid p.13-14</span></h3>
+  <ol>
+    <li><strong>Demand Forecast / 需求预测:</strong> 1~7 days ahead using weather forecast data / 利用天气预报数据提前1~7天预测</li>
+    <li><strong>PV Output Forecast / PV输出预测:</strong> 1~7 days ahead using solar radiation forecast / 利用太阳辐射预报提前1~7天预测</li>
+    <li><strong>SoC Low-variation Planning / 充电状态低变化规划:</strong> 1-day operation schedule for battery / 电池1天运行计划</li>
+    <li><strong>Power Generation Programme Planning / 发电计划规划:</strong> Meet schedule for power flow at interconnection point / 满足互联点功率流调度</li>
+    <li><strong>Supply and Demand Control / 供需控制:</strong> Battery compensates momentary changes in demand and PV output / 电池补偿需求和PV输出的瞬时变化</li>
+    <li><strong>Demand Response / 需求响应:</strong> Issues different urgency levels to smart meters via MDMS / 通过MDMS向智能电表发布不同紧急级别指令</li>
+  </ol>
+
+  <h3>17.4 Demand Response Command Levels / 需求响应指令级别 <span class="src">DG Smart Grid p.15</span></h3>
+  <table>
+    <tr><th>Level / 级别</th><th>Status / 状态</th><th>Action / 动作</th></tr>
+    <tr><td><strong>Normal-1</strong></td><td>Enough generation capacity / 发电容量充足</td><td>TOU pricing / 分时电价</td></tr>
+    <tr><td><strong>Normal-1*</strong></td><td>Load > forecast, TOU not enough / 负荷>预测，TOU不够</td><td>Dynamic Pricing (CPP) / 动态定价</td></tr>
+    <tr><td><strong>Normal-2</strong></td><td>Load will exceed generation / 负荷将超过发电</td><td>Request energy (kWh) reduction / 请求减少能耗(kWh)</td></tr>
+    <tr><td><strong>Normal-3</strong></td><td>More serious than Normal-2 / 比Normal-2更严重</td><td>Stronger energy reduction request / 更强烈的节能请求</td></tr>
+    <tr><td style="color:var(--accent)"><strong>Emergency-1</strong></td><td>Demand-supply imbalance / 供需失衡</td><td>Ask customers to disconnect / 要求客户断开</td></tr>
+    <tr><td style="color:var(--accent)"><strong>Emergency-2</strong></td><td>Severe imbalance / 严重失衡</td><td>Force disconnect at smart meter / 在智能电表强制断开</td></tr>
+    <tr><td><strong>Normal-0</strong></td><td>Reconnection / 重新连接</td><td>Start energizing at smart meter / 在智能电表开始供电</td></tr>
+  </table>
+
+  <h3>17.5 DR Control Methods / DR控制方法 <span class="src">DG Smart Grid p.16</span></h3>
+  <ol>
+    <li><strong>Direct control / 直接控制:</strong> Optimal charging/discharging assignment of consumer batteries considering degradation suppression to extend battery life / 考虑退化抑制以延长电池寿命的最优充放电分配</li>
+    <li><strong>Indirect control / 间接控制:</strong> Local battery control algorithm (HEMS) + appropriate dynamic pricing (CPP) to achieve peak-load shaving / 本地电池控制算法(HEMS)+适当动态定价(CPP)实现削峰</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 18: DG IMPACTS ON DISTRIBUTION - DETAILED -->
+<!-- ============================================================ -->
+<section id="ch18">
+  <h2>18. DG Impacts on Distribution Network — Detailed / DG对配电网的影响详解<span class="tag">EXAM</span></h2>
+
+  <h3>18.1 Five Common Problems / 五大常见问题 <span class="src">DG Smart Grid p.19-30</span></h3>
+  <table>
+    <tr><th>Problem / 问题</th><th>Mechanism / 机制</th><th>Smart Grid Solution / 智能电网解决方案</th></tr>
+    <tr>
+      <td><strong>1. False/Sympathetic Tripping</strong><br>误跳闸/同感跳闸</td>
+      <td>Healthy feeder B trips for fault on feeder A, because DG on B has high short-circuit contribution and faster OC relay</td>
+      <td>a) Re-set relay settings (faster for non-DG, slower for DG feeder)<br>b) Add directional element<br>c) <strong>Communication interlock from smart distribution system</strong></td>
+    </tr>
+    <tr>
+      <td><strong>2. Reclosing Issues</strong><br>重合闸问题</td>
+      <td>DG must disconnect within 0.2s-2s (anti-islanding). Reclose interval ≥ 2s needed. <strong>Instantaneous reclose is NOT compatible with DG!</strong></td>
+      <td><strong>Coordinated reclose with smart grid</strong> — communication-based coordination between DG and reclose timing</td>
+    </tr>
+    <tr>
+      <td><strong>3. Reduction of Reach</strong><br>保护范围缩小</td>
+      <td>DG infeed reduces current seen by relay → shortens protection zone. Low-current faults near feeder end go undetected.</td>
+      <td>a) Decrease relay minimum pickup current<br>b) Add line recloser for extended zone<br>c) Use transformer connection minimizing DG ground fault contribution</td>
+    </tr>
+    <tr>
+      <td><strong>4. Voltage Regulation Issues</strong><br>电压调节问题</td>
+      <td>DG provides voltage rise. When DG disconnects (fault), voltage dips for up to 5 minutes. Risk of load equipment damage.</td>
+      <td>a) Install more voltage regulators<br>b) <strong>Allow DG to reconnect more quickly via PSAI-based anti-islanding</strong> — only possible with smart grid control</td>
+    </tr>
+    <tr>
+      <td><strong>5. Unintentional Islanding</strong><br>非故意孤岛</td>
+      <td>DG continues to power local grid during outage — safety hazard for maintenance workers</td>
+      <td><strong>PSAI-based anti-islanding with remote utility control</strong>; in smart grid, can transition to intentional islanding when conditions permit</td>
+    </tr>
+  </table>
+
+  <h3>18.2 Voltage Dips / LVRT / 电压跌落与低电压穿越 <span class="src">DG Smart Grid p.31; Grid connection p.37</span></h3>
+  <div class="key-point">
+    Voltage dip is the most common Power Quality (PQ) issue. DG's ability to help depends on technology:<br>
+    - <strong>Large rotating machines:</strong> Can support voltage on load side (but limited by transformer impedance)<br>
+    - <strong>Inverter-based DG without LVRT:</strong> May <strong>worsen</strong> the situation — disconnects during voltage dip, reducing support<br>
+    - <strong>Inverter-based DG WITH LVRT:</strong> "Rides through" voltage drop; can inject reactive current within milliseconds to help prevent blackouts<br>
+    <span class="bilingual">电压跌落是最常见PQ问题。无LVRT的逆变器型DG可能加剧问题；有LVRT的可以穿越电压跌落并注入无功电流。</span>
+  </div>
+
+  <h3>18.3 DC Distribution — Alternative Grid Connection / 直流配电——替代并网方式 <span class="src">DG Smart Grid p.37-46</span></h3>
+  <table>
+    <tr><th>Method / 方式</th><th>Pros / 优点</th><th>Cons / 缺点</th></tr>
+    <tr>
+      <td><strong>AC grid via Inverter</strong><br>(Most common / 最常见)</td>
+      <td>Standard, well-established / 标准，成熟</td>
+      <td>Energy losses in conversion processes; anti-islanding issues / 转换过程能量损耗；反孤岛问题</td>
+    </tr>
+    <tr>
+      <td><strong>AC network with UPS</strong></td>
+      <td>High quality supply; DC backup simple / 高质量供电；DC备用简单</td>
+      <td>Limited to dedicated loads; battery size limits / 仅限专用负荷；电池容量限制</td>
+    </tr>
+    <tr>
+      <td><strong>DC network via converter</strong><br>(Newly proposed / 新提案)</td>
+      <td><strong>Greatly reduces conversion losses</strong> (DC-DC efficiency > AC-DC); improved with energy storage</td>
+      <td>New infrastructure needed; standards developing / 需新基础设施；标准制定中</td>
+    </tr>
+  </table>
+  <p>Proposed 400V-DC system (by Dr. M.H. Pong): DC-DC converters replace inverters for RE; centralized AC-DC converter replaces transformer; 400V DC from ground floor up to socket. DC-DC consistently higher efficiency than AC-DC across all power ratings.<br><span class="bilingual">庞博士提出的400V-DC系统：DC-DC变换器替代RE逆变器；集中式AC-DC变换器替代变压器；400V DC从底层到插座。DC-DC在所有功率等级上效率始终高于AC-DC。</span></p>
+</section>
+
+<!-- ============================================================ -->
+<!-- UPDATED NAVIGATION -->
+<!-- ============================================================ -->
+
+</div>
+
+<footer>
+  <p>ELEC6095 Smart Grid — Comprehensive Final Exam Review / 期末复习全面资料</p>
+  <p>HKU Department of Electrical and Electronic Engineering</p>
+  <p>Compiled from: all lecture slides, past exam papers (2017-2025), research papers, assignment 1, and professor's exam review session</p>
+  <p style="margin-top:8px">Good luck on your exam! / 祝你考试顺利！加油！</p>
+</footer>
+
+</body>
+</html>
